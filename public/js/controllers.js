@@ -1,12 +1,8 @@
-var phonecatApp = angular.module('phonecatApp', []);
+var phonecatApp = angular.module('ideaHuntApp', []);
 
-phonecatApp.controller('PhoneListCtrl', function ($scope) {
-  $scope.phones = [
-    {'name': 'Nexus S',
-     'snippet': 'Fast just got faster with Nexus S.'},
-    {'name': 'Motorola XOOM™ with Wi-Fi',
-     'snippet': 'The Next, Next Generation tablet.'},
-    {'name': 'MOTOROLA XOOM™',
-     'snippet': 'The Next, Next Generation tablet.'}
-  ];
+
+phonecatApp.controller('IdeaHuntListCtrl', function ($scope) {
+ 	console.log("Inside IdeaHuntListCtrl");
+
+	$scope.posts = data.hits;
 });

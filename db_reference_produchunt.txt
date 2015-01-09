@@ -1,0 +1,47 @@
+{  
+   "hits":[  
+      {  
+         "url":"https://qbaka.com/",
+         "name":"Qbaka",
+         "tagline":"Front-end error monitoring and user analytics for web apps",
+         "comment_count":1,
+         "slug":"qbaka",
+         "vote_count":16,
+         "shortened_link":"f4feccc194",
+         "is_maker_inside":false,
+         "author":{  
+            "id":79,
+            "name":"Kevin William David",
+            "headline":"Co-Founder, WalletKit",
+            "avatar_url":"//aws.producthunt.com/profile_image/32176/1417276945-HVRn9P-J80@2X.jpeg",
+            "link":"/kwdinc",
+            "username":"kwdinc",
+            "is_maker":true
+         },
+         "objectID":"11165",
+         "_highlightResult":{  
+            "name":{  
+               "value":"<em>Qba</em>ka",
+               "matchLevel":"full",
+               "matchedWords":[  
+                  "iqba"
+               ]
+            },
+            "tagline":{  
+               "value":"Front-end error monitoring and user analytics for web apps",
+               "matchLevel":"none",
+               "matchedWords":[  
+
+               ]
+            }
+         }
+      }
+   ],
+   "nbHits":1,
+   "page":0,
+   "nbPages":1,
+   "hitsPerPage":20,
+   "processingTimeMS":1,
+   "query":"iqba",
+   "params":"query=iqba&hitsPerPage=20&page=0"
+}
