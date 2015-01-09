@@ -5,4 +5,41 @@ phonecatApp.controller('IdeaHuntListCtrl', function ($scope) {
  	console.log("Inside IdeaHuntListCtrl");
 
 	$scope.posts = data.hits;
+	$scope.addPostFormClass ="new-post-modal hidden";
+	$scope.bodyExtraClassOnAddPostForm  ="";
+
+	// ToDO: test author
+	var author = $scope.posts[0].author;
+	
+	$scope.newPost = {name:'', tagline:'', url:'', vote_count:0, comment_count:0, 'author': author};
+
+	// Show add post form
+	$scope.showAddPostForm = function(){
+		console.log("Inside showAddPostForm");
+		$scope.addPostFormClass ="new-post-modal";
+		$scope.bodyExtraClassOnAddPostForm ="showing-discussion";
+
+	};
+
+	// Hide add post form
+	$scope.hideAddPostForm = function(){
+		console.log("Inside hideAddPostForm");
+		$scope.addPostFormClass ="new-post-modal hidden";
+		$scope.bodyExtraClassOnAddPostForm ="";
+	};
+
+	// Handle add post.
+	$scope.addPost = function(){
+		console.log("Inside add post");
+		console.log($scope.newPost);
+
+		// Add new post to post.
+		$scope.posts.push($scope.newPost);
+
+		// Reset newPost
+		$scope.newPost = {name:'', tagline:'', url:''};
+
+		//Hide addPost form
+		$scope.hideAddPostForm();
+	};
 });

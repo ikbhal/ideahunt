@@ -13,8 +13,33 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 	  </style>
 	  <link rel="stylesheet" href="css/typekit.css">
 </head>
-	<body class="posts-index" ng-app="ideaHuntApp" >  
+	<body class="posts-index {{bodyExtraClassOnAddPostForm}}" ng-app="ideaHuntApp" ng-controller="IdeaHuntListCtrl" >  
 	
+
+		<div ng-click="hideAddPostForm()" class="close-discussion-body close-discussion" id="close-discussion-panel"></div>
+		<!-- Post New Begin -->
+		<div class="show-post-modal hidden" ng-click="hideAddPostForm()"></div>
+
+		<div ng-class="addPostFormClass">
+		  <div class="modal-content">
+			  <header class="modal--header">
+			    <h1 class="modal--header--title">Post a new product</h1>
+			    <p class="modal--header--description">Find something new and interesting? Hunt it!</p>
+			  </header>
+			  <div class="new-post">
+			    <form class="new_submission" id="new_submission">
+			    	<input name="utf8" type="hidden" value="✓">
+			    	<input type="hidden" name="authenticity_token" value="AmF6DsT1N7GoWBTvUql9FtObZH5HFKvJdngClwL2sXvFc39Py5TqGkDvxpW58z202EuibrUoDA7EFhRAPfcb4A==">
+			    	<input placeholder="Product URL" class="input" type="url" ng-model="newPost.url" id="submission_url"><br>
+			      <input placeholder="Product Name" class="product-name input" type="text" ng-model="newPost.name" id="submission_name"><br>
+			      <input placeholder="Tagline" class="product-tagline input" type="text" ng-model="newPost.tagline" id="submission_tagline"><br>
+			      <input type="submit" name="commit" value="Hunt it" class="new_post_submit button v-green" ng-click="addPost()">
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Post New End -->
+
 	  <header class="header headroom headroom--top" data-component="Headroom">
 	    <div class="container">
 	      <a class="brand" href="index.html">
@@ -62,7 +87,7 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 	        </li>
 
 	        <li class="u-hidden-on-small-screen">
-	          <a href="http://localhost/#" class="header--post new-post-link">
+	          <a href="http://localhost/#" ng-click="showAddPostForm()" class="header--post new-post-link">
 	            <svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 							  <g id="Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
 							    <g id="Featured" sketch:type="MSArtboardGroup" transform="translate(-1245.000000, -146.000000)" fill="#DC5425">
@@ -142,7 +167,7 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 
 	   </div>
 
-	<div id="posts-wrapper" class="container posts" ng-controller="IdeaHuntListCtrl">
+	<div id="posts-wrapper" class="container posts" >
 	  
 	  <div class="day" data-component="PostCompact" data-posts-posted-today="true" data-posts-cutoff-index="9">
 	    <time class="posts--date" datetime="2015-01-09">

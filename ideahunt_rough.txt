@@ -1,0 +1,16 @@
+  <div class="close-discussion-body close-discussion" id="close-discussion-panel">  	
+	  </div>
+	  <div class="show-post-modal hidden">
+	  </div>
+
+	  <div class="new-post-modal hidden">
+	      <div class="modal-container contact-support">
+					<h2 class="contact-support-header">
+						Sorry, looks like there's a hiccup!
+					</h2>
+
+					<p>Please drop us a line at <a href="mailto:support@producthunt.com?subject=Support%20Request:%20Unable%20to%20post%20a%20product&body=Hi%20Product%20Hunt%20Support,%20I%20received%20an%20error%20telling%20me%20to%20contact%20support%20when%20I%20tried%20to%20post%20a%20product.%20Can%20you%20guys%20help%20me%20out?%20Thanks!">support@producthunt.com</a> and we'll help you out!</p>
+
+					<a href="http://localhost/#" class="button close">Close</a>
+				</div>
+		</div>

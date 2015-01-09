@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://docs.angularjs.org/examples/example-example62/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+  <meta charset="UTF-8">
+  <title>Example - example-example62</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  
+
+  <script src="angular.min(1).js"></script>
+  
+
+  
+</head>
+<body ng-app="" class="ng-scope" gram_dict="true">
+  <p ng-class="{strike: deleted, bold: important, red: error}" class="strike bold">Map Syntax Example</p>
+<input type="checkbox" ng-model="deleted" class="ng-valid ng-dirty ng-valid-parse ng-touched"> deleted (apply "strike" class)<br>
+<input type="checkbox" ng-model="important" class="ng-valid ng-dirty ng-valid-parse ng-touched"> important (apply "bold" class)<br>
+<input type="checkbox" ng-model="error" class="ng-pristine ng-untouched ng-valid"> error (apply "red" class)
+<hr>
+<p ng-class="style" class="bold strike red">Using String Syntax</p>
+<input type="text" ng-model="style" placeholder="Type: bold strike red" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+<hr>
+<p ng-class="[style1, style2, style3]">Using Array Syntax</p>
+<input ng-model="style1" placeholder="Type: bold, strike or red" class="ng-pristine ng-untouched ng-valid"><br>
+<input ng-model="style2" placeholder="Type: bold, strike or red" class="ng-pristine ng-untouched ng-valid"><br>
+<input ng-model="style3" placeholder="Type: bold, strike or red" class="ng-pristine ng-untouched ng-valid"><br>
+
+</body><div class="gr-context gr-dict gr-context-loader gr-dict-freemium" style="display: none;"><span class="gr-triangle"></span><div class="gr-placeholder"></div><a href="http://www.grammarly.com/?utm_source=dict&utm_medium=link&utm_campaign=chrome_plg" target="_blank" class="gr-hint-settings"></a><strong class="gr-title"></strong><div class="gr-dict-content"></div></div></html>
