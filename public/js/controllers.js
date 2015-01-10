@@ -73,7 +73,7 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 			function(response){
 				console.log('Got get ideas response from server is ');
 				console.log(response);
-				$scope.posts = response.data;
+				$scope.posts = response.data.data;
 			},
 			function(err){
 				console.log('Unable to get idea from idea service ');
