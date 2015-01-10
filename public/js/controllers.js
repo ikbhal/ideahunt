@@ -69,7 +69,7 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 	// toggle vote
 	$scope.toggleVote = function(post) {
 		console.log('Inside toggleVote for idea id: ' + post._id);
-		console.log('Idea ' + post);
+		console.log(post);
 		ideaService.toggleIdeaVote(post._id).then(
 			function(data){
 				console.log("ideaService toggleIdeaVote success ");

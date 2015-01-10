@@ -331,7 +331,7 @@ app.post('/ideas', function(req, res){
 
 //Vote
 app.post('/ideas/:ideaId/vote', function(req, res){
-	var ideadId = req.param('ideaId');
+	var ideaId = req.param('ideaId');
 	console.log('Inside post vote for ideaId : ' + ideaId);
 
 	// Check reques is authenticate or not
