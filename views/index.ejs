@@ -84,7 +84,7 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 
 	        <li>
 	        	<% if(typeof user !== 'undefined'){%>
-	        		<p><%= user.name%>
+	        		
 	        		<!-- Begin User logged in Egg -->
 							<li data-popover="click" ng-click="toggleUserMenu()" class="m-active">
 							  <a href="#" class="header--triangle">
@@ -101,7 +101,7 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 	        		<!-- End User logged in Egg -->
 
 	        		<!-- Begin user profile, logout popup  menu -->
-	        		<div class="popover"  style="display: none; left: 1019.34375px; top: 60px;">
+	        		<div class="popover"  ng-show="showUserMenuFlag">
 							  <div class="popover--arrow"></div>
 							  <div class="popover--content">
 		              <ul class="dropdown-menu--list">

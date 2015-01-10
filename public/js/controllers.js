@@ -4,8 +4,7 @@ var phonecatApp = angular.module('ideaHuntApp', []);
 phonecatApp.controller('IdeaHuntListCtrl', function ($scope) {
  	console.log("Inside IdeaHuntListCtrl");
 
-	$scope.showUserMenuFlag = true;
-	$scope.showUserMenu = 'none';
+	$scope.showUserMenuFlag = false;
 	
 	$scope.posts = data.hits;
 	$scope.addPostFormClass ="new-post-modal hidden";
@@ -63,12 +62,7 @@ phonecatApp.controller('IdeaHuntListCtrl', function ($scope) {
 	};
 
 	$scope.toggleUserMenu = function(){
+		console.log("Inside toggleUserMenu");
 		$scope.showUserMenuFlag = !$scope.showUserMenuFlag;
-
-		if($scope.showUserMenuFlag){
-			$scope.showUserMenu = 'block';
-		}else {
-			$scope.showUserMenu = 'none';
-		}
 	};
 });
