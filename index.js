@@ -2,6 +2,28 @@ var http = require('http'),
 	express = require('express'),
 	app = express();
 
+// Loads configuration files
+var nconf = require('nconf');
+nconf.argv()
+       .env()
+       .file({ file: 'config/twitter_oauth.json' });
+
+
+var passport = require('passport');
+var TwitterStrategy = require('passport-twitter');
+
+passport.use(new TwitterStrategy({
+    consumerKey: TWITTER_CONSUMER_KEY,
+    consumerSecret: TWITTER_CONSUMER_SECRET,
+    callbackURL: "http://toprecur.clouadpp.net/auth/twitter/callback"
+  },
+  function(token, tokenSecret, profile, done) {
+    User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
+
 var path = require('path');
 var express = require('express');
 var logger = require('morgan');

@@ -1,0 +1,5 @@
+{
+"consumerKey" : "HaWUejwPFKQZFuOU8V5AK1eTV",
+"consumerSecret" : "J9h7UXgjRkHPgxyb4ql9b7CU2Bxuy5ADQBODXjKz5JKwoJaFPq",
+"callbackURL": "http://toprecur.clouadpp.net/auth/twitter/callback"
+}
