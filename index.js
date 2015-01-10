@@ -334,8 +334,10 @@ app.post('/ideas/:ideaId/vote', function(req, res){
 	var ideaId = req.param('ideaId');
 	console.log('Inside post vote for ideaId : ' + ideaId);
 
+	var userId = req.body;
+	console.log('userId:' + userId);
 	// Check reques is authenticate or not
-	if(req.isAuthenticated()) {
+	if(userId && userId != null) {
 		console.log('Authenticate  , default index.jade with extra user');
 		var response = {'status' : 'fail'};
 

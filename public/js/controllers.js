@@ -13,10 +13,11 @@ ideaHuntApp.service('ideaService', function($http){
 		return $http.get('http://toprecur.cloudapp.net/ideas');
 	};
 
-	this.toggleIdeaVote = function(ideaId){
+	this.toggleIdeaVote = function(ideaId, userId){
 		console.log("Inside toggle idea vote");
 		var voteURL = 'http://toprecur.cloudapp.net/ideas/' + ideaId + '/vote'
-		return $http.post(voteURL);
+		console.log('userId:' + userId);
+		return $http.post(voteURL, userId);
 	};
 });
 
@@ -70,7 +71,8 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 	$scope.toggleVote = function(post) {
 		console.log('Inside toggleVote for idea id: ' + post._id);
 		console.log(post);
-		ideaService.toggleIdeaVote(post._id).then(
+		console.log('user id: ' + userId);
+		ideaService.toggleIdeaVote(post._id, userId).then(
 			function(data){
 				console.log("ideaService toggleIdeaVote success ");
 				console.log(data);

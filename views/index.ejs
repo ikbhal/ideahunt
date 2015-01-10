@@ -125,9 +125,16 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 		                <li><a href="/logout">Log out</a></li>
 		              </ul>
 							  </div>
-							</div>
+							</div> 
 							<!-- End user profile, logout popup  menu -->
+							
+							<!-- Begin user id token -->
+							<script type='text/javascript'>
+								var userId = '<%= user._id %>';
+								console.log("user id in script is " + userId);
+							</script>
 
+							<!-- End user id token -->
 
 	        	<% }else { %>
 	       	  <a href="auth/twitter">Log in</a>
