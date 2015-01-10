@@ -257,7 +257,7 @@ app.get('/ideas', function(req, res){
 	Idea.find(function(err, ideas){
 		var response = {'status': 'fail'};
 		if(err) {
-			console.log("Unable to get ideas due to error " + util.inspect(err);
+			console.log("Unable to get ideas due to error " + util.inspect(err));
 			response.err = err;
 		} else { //Success 
 			console.log("ideas  fetched are " + ideas);
