@@ -1,7 +1,19 @@
-var phonecatApp = angular.module('ideaHuntApp', []);
+var ideaHuntApp = angular.module('ideaHuntApp', []);
 
+// Begin of ideaService 
+ideaHuntApp.service('ideaService', function($http){
+	this.addIdea = function(idea){
+		console.log("Inside IdeaService.addIdea");
+		console.log(idea);
+		return $http.post('http://toprecur.cloudapp.net/ideas', idea);
+	};
 
-phonecatApp.controller('IdeaHuntListCtrl', function ($scope) {
+	this.getIdeas = function(){
+		console.log("Inside IdeaService.getIdeas");
+	};
+});
+// End of ideaService 
+ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
  	console.log("Inside IdeaHuntListCtrl");
 
 	$scope.showUserMenuFlag = false;
@@ -46,19 +58,31 @@ phonecatApp.controller('IdeaHuntListCtrl', function ($scope) {
 		post.isVote = !post.isVote;
 		console.log(post);
 	};
+
 	// Handle add post.
 	$scope.addPost = function(){
 		console.log("Inside add post");
 		console.log($scope.newPost);
 
-		// Add new post to post.
-		$scope.posts.push($scope.newPost);
+		Console.log("Calling ideaService.addIdea ");
+		ideaService.addIdea($scope.newPost).then(function(idea){
+				// Add new post to post.
+			$scope.posts.push($scope.newPost);
 
-		// Reset newPost
-		$scope.newPost = {name:'', tagline:'', url:''};
+			// Reset newPost
+			$scope.newPost = {name:'', tagline:'', url:''};
 
-		//Hide addPost form
-		$scope.hideAddPostForm();
+			//Hide addPost form
+			$scope.hideAddPostForm();
+
+		},
+
+		function(err){
+			console.log("Unable to add idea due to error");
+			console.log(err);
+		});
+
+		
 	};
 
 	$scope.toggleUserMenu = function(){
