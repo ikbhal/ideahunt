@@ -32,7 +32,7 @@
     "passport-twitter": "^1.0.2",
     "serve-favicon": "^2.2.0",
     "mongodb": "^1.4.26",
-    "mongoose": "^3.8.21",
+    "mongoose": "^3.8.21"
 
   }
 }
