@@ -250,6 +250,27 @@ app.get('/ping', function(req, res){
 });
 
 // API
+// Get all ideas
+app.get('/ideas', function(req, res){
+	console.log("Inside get /ideas -> get ideas");
+
+	Idea.find(function(err, ideas){
+		var response = {'status': 'fail'};
+		if(err) {
+			console.log("Unable to get ideas due to error " + util.inspect(err);
+			response.err = err;
+		} else { //Success 
+			console.log("ideas  fetched are " + ideas);
+
+			response.status = 'success';
+			response.data = ideas;
+		}
+		
+		// Send response
+		res.send(response);
+});
+
+// Add idea
 app.post('/ideas', function(req, res){
 	console.log("Handling post /ideas ->Adding idea");
 

@@ -10,6 +10,7 @@ ideaHuntApp.service('ideaService', function($http){
 
 	this.getIdeas = function(){
 		console.log("Inside IdeaService.getIdeas");
+		return $http.get('http://toprecur.cloudapp.net/ideas');
 	};
 });
 // End of ideaService 
@@ -19,6 +20,10 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 	$scope.showUserMenuFlag = false;
 	
 	$scope.posts = data.hits;
+	
+	// Call get ideas and populate front end.
+	$scope.getIdeas();
+
 	$scope.addPostFormClass ="new-post-modal hidden";
 	$scope.bodyExtraClassOnAddPostForm  ="";
 
@@ -82,7 +87,18 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 			console.log(err);
 		});
 
-		
+		// Populate ideas in front end.
+		$scope.getIdeas = function(){
+			ideaService.getIdeas().then(
+				function(response){
+					$scope.posts = response.data;
+				},
+				function(err){
+					console.log("Unable to get idea from idea service ");
+					console.log(err);
+				}
+			);
+		};
 	};
 
 	$scope.toggleUserMenu = function(){
