@@ -1,0 +1,295 @@
+doctype // saved from url=(0027)http://localhost/
+html.wf-proximanova-i4-active.wf-proximanova-i6-active.wf-proximanova-i7-active.wf-proximanova-n4-active.wf-proximanova-n6-active.wf-proximanova-n7-active.wf-active
+head
+  meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    | &#x9;&#x9;
+    title Idea Hunt
+    |   &#x9;
+    meta(name='description', content="Idea Hunt is a curation of the best new Ideas, every day. Discover the\
+    latest mobile apps, websites, and technology Ideas that everyone's talking about.\
+    ")
+    | &#x9;&#x9;
+    link(rel='stylesheet', media='all', href='css/app.css')
+    | &#x9;  
+    style(type='text/css').
+      .tk-proxima-nova{font-family:"proxima-nova",sans-serif;}
+    | &#x9;  
+    link(rel='stylesheet', href='css/typekit.css')
+  | &#x9;
+  body.posts-index(class='{{bodyExtraClassOnAddPostForm}}', ng-app='ideaHuntApp', ng-controller='IdeaHuntListCtrl')
+    #close-discussion-panel.close-discussion-body.close-discussion(ng-click='hideAddPostForm()')
+    // Post New Begin
+    .show-post-modal.hidden(ng-click='hideAddPostForm()')
+    | &#x9;&#x9;
+    div(ng-class='addPostFormClass')
+      .modal-content
+        header.modal--header
+          h1.modal--header--title Post a new idea
+          | &#x9;&#x9;&#x9;    
+          p.modal--header--description Find something new and interesting? Hunt it!
+        | &#x9;&#x9;&#x9;  
+        .new-post
+          form#new_submission.new_submission
+            input(name='utf8', type='hidden', value='✓')
+            | &#x9;&#x9;&#x9;    &#x9;
+            input(type='hidden', name='authenticity_token', value='AmF6DsT1N7GoWBTvUql9FtObZH5HFKvJdngClwL2sXvFc39Py5TqGkDvxpW58z202EuibrUoDA7EFhRAPfcb4A==')
+            | &#x9;&#x9;&#x9;    &#x9;
+            input#submission_url.input(placeholder='Idea URL', type='url', ng-model='newPost.url')
+            br
+            | &#x9;&#x9;&#x9;      
+            input#submission_name.product-name.input(placeholder='Idea Name', type='text', ng-model='newPost.name')
+            br
+            | &#x9;&#x9;&#x9;      
+            input#submission_tagline.product-tagline.input(placeholder='Tagline', type='text', ng-model='newPost.tagline')
+            br
+            | &#x9;&#x9;&#x9;      
+            input.new_post_submit.button.v-green(type='submit', name='commit', value='Hunt it', ng-click='addPost()')
+    // Post New End
+    header.header.headroom.headroom--top(data-component='Headroom')
+      .container
+        a.brand(href='index.html')
+          svg.brand--logo(width='30px', height='30px', viewbox='0 0 30 30', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', xmlns:sketch='http://www.bohemiancoding.com/sketch/ns')
+            g#Page-1(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd', sketch:type='MSPage')
+              circle#Oval-1(fill='#92cf10', sketch:type='MSShapeGroup', cx='15', cy='15', r='15')
+              | &#x9;&#x9;&#x9;&#x9;&#x9;          
+              circle#Oval-2(fill='#FFFFFF', sketch:type='MSShapeGroup', cx='15', cy='6', r='2')
+              | &#x9;&#x9;&#x9;&#x9;&#x9;      
+              path#P(d='M13,23  L13,12 L17,12 L17,23 ', fill='#FFFFFF', sketch:type='MSShapeGroup')
+          | &#x9;        
+          .brand--title.u-hidden-on-small-screen
+            h1 Idea Hunt
+            | &#x9;          
+            h2.u-hidden-on-medium-screen The best new Ideas, every day
+        | &#x9;      
+        ul.header--nav
+          li(data-popover='click')
+            a.header--more(href='http://localhost/#')
+              svg(width='25px', height='5px', viewbox='0 0 25 5', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', xmlns:sketch='http://www.bohemiancoding.com/sketch/ns')
+                g#Flow(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd', sketch:type='MSPage')
+                  g#Featured(sketch:type='MSArtboardGroup', transform='translate(-1076.000000, -160.000000)', fill='#CCC8C7')
+                    g#Navigation(sketch:type='MSLayerGroup', transform='translate(107.000000, 126.000000)')
+                      path#Oval-230(d='M971.5,39 C972.880712,39 974,37.8807119 974,36.5 C974,35.1192881 972.880712,34 971.5,34 C970.119288,34 969,35.1192881 969,36.5 C969,37.8807119 970.119288,39 971.5,39 L971.5,39 Z M981.5,39 C982.880712,39 984,37.8807119 984,36.5 C984,35.1192881 982.880712,34 981.5,34 C980.119288,34 979,35.1192881 979,36.5 C979,37.8807119 980.119288,39 981.5,39 L981.5,39 Z M991.5,39 C992.880712,39 994,37.8807119 994,36.5 C994,35.1192881 992.880712,34 991.5,34 C990.119288,34 989,35.1192881 989,36.5 C989,37.8807119 990.119288,39 991.5,39 L991.5,39 Z', sketch:type='MSShapeGroup')
+            | &#x9;          
+            div(data-popover='content')
+              ul.dropdown-menu--list
+                li
+                  a(href='http://localhost/about') About
+                | &#x9;              
+                li
+                  a(href='http://localhost/apps') Apps
+                | &#x9;              
+                li
+                  a(target='_blank', href='http://blog.producthunt.com/') Blog
+                | &#x9;              
+                li
+                  a(href='http://localhost/faq') FAQ
+                | &#x9;              
+                li
+                  a(href='http://localhost/jobs') Jobs
+                | &#x9;              
+                li
+                  a(href='http://localhost/meetups') Meetups
+                | &#x9;              
+                li
+                  a(href='http://localhost/radio') Radio
+          | &#x9;        
+          li
+            a(href='auth/twitter') Log in
+          | &#x9;        
+          li.u-hidden-on-small-screen
+            a.header--post.new-post-link(href='http://localhost/#', ng-click='showAddPostForm()')
+              svg(width='30px', height='30px', viewbox='0 0 30 30', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', xmlns:sketch='http://www.bohemiancoding.com/sketch/ns')
+                g#Flow(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd', sketch:type='MSPage')
+                  g#Featured(sketch:type='MSArtboardGroup', transform='translate(-1245.000000, -146.000000)', fill='#DC5425')
+                    g#Navigation(sketch:type='MSLayerGroup', transform='translate(107.000000, 126.000000)')
+                      path#Rectangle-143(d='M1152,34 L1152,30.0024733 C1152,29.455761 1152.44772,29 1153,29 C1153.55614,29 1154,29.4488226 1154,30.0024733 L1154,34 L1157.99753,34 C1158.54424,34 1159,34.4477153 1159,35 C1159,35.5561352 1158.55118,36 1157.99753,36 L1154,36 L1154,39.9975267 C1154,40.544239 1153.55228,41 1153,41 C1152.44386,41 1152,40.5511774 1152,39.9975267 L1152,36 L1148.00247,36 C1147.45576,36 1147,35.5522847 1147,35 C1147,34.4438648 1147.44882,34 1148.00247,34 L1152,34 Z M1138,35 C1138,26.7157288 1144.71391,20 1153,20 C1161.28427,20 1168,26.7139073 1168,35 C1168,43.2842712 1161.28609,50 1153,50 C1144.71573,50 1138,43.2860927 1138,35 Z', sketch:type='MSShapeGroup')
+        | &#x9;      
+        .header--search.v-no-user
+          .header--search--wrapper.input-wrapper
+            label.header--search--trigger(for='search-field')
+              svg(width='16px', height='16px', viewbox='0 0 16 16', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+                g(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd')
+                  g(transform='translate(-403.000000, -153.000000)', fill='#534540')
+                    g(transform='translate(107.000000, 126.000000)')
+                      g(transform='translate(285.000000, 18.000000)')
+                        path(d='M21.6164386,20.5306522 C20.4955148,21.4489576 19.0621088,22 17.5,22 C13.9101491,22 11,19.0898509 11,15.5 C11,11.9101491 13.9101491,9 17.5,9 C21.0898509,9 24,11.9101491 24,15.5 C24,16.8052135 23.6152971,18.0205747 22.9530943,19.0388807 L27.1819805,23.267767 L25.767767,24.6819805 L21.6164386,20.5306522 Z M17.5,20 C19.9852814,20 22,17.9852814 22,15.5 C22,13.0147186 19.9852814,11 17.5,11 C15.0147186,11 13,13.0147186 13,15.5 C13,17.9852814 15.0147186,20 17.5,20 Z')
+            | &#x9;          
+            input#search-field.input(type='text', name='search_field', autocomplete='off', autocorrect='off', autocapitalize='off', spellcheck='false', placeholder='Search for Ideas and people', data-search='input')
+            | &#x9;          
+            .header-search--close.v-icon(data-search='stop')
+              svg(width='12px', height='12px', viewbox='0 0 12 12', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+                g#Page-1(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd')
+                  path#Rectangle-402(d='M5,5 L5,-0.99912834 C5,-1.55536914 5.4477153,-2 6,-2 C6.5561352,-2 7,-1.5518945 7,-0.99912834 L7,5 L12.9991283,5 C13.5553691,5 14,5.4477153 14,6 C14,6.5561352 13.5518945,7 12.9991283,7 L7,7 L7,12.9991283 C7,13.5553691 6.5522847,14 6,14 C5.4438648,14 5,13.5518945 5,12.9991283 L5,7 L-0.99912834,7 C-1.55536914,7 -2,6.5522847 -2,6 C-2,5.4438648 -1.5518945,5 -0.99912834,5 L5,5 L5,5 Z', fill='#534540', transform='translate(6.000000, 6.000000) rotate(45.000000) translate(-6.000000, -6.000000) ')
+            | &#x9;          
+            .header-search--close.v-button.button.v-light-grey.v-small(data-search='stop') Done
+      | &#x9;    
+      .header--secondary.v-search
+        .container
+          a.header--secondary--link.m-active(data-search-result='posts', href='http://localhost/#') Ideas
+          | &#x9;        
+          a.header--secondary--link(data-search-result='users', href='http://localhost/#') People
+          | &#x9;        
+          .header--secondary--powered-by.u-hidden-on-small-screen
+            | powered by
+            a(title='Algolia Realtime Search', target='_blank', href='http://www.algolia.com/?utm_source=producthunt&utm_medium=link&utm_campaign=producthunt_search') Algolia
+      | &#x9;    
+      .header--secondary.v-links
+        .container
+          a.header--secondary--link.m-active(href='index.html') Home
+          | &#x9;        
+          a.header--secondary--link(href='http://localhost/collections') Collections
+    | &#x9;  
+    .search--main.container
+      .search--results--posts
+        h4.title.m-big.u-hidden-on-small-screen
+          | Ideas
+          span.search--stats(data-search='stats') 0 results
+        | &#x9;&#x9;    
+        ul.search--results--list(data-search='results')
+        | &#x9;&#x9;    
+        .search--results--no-results(data-search='empty', style='display: none;')
+          | Sorry! We couldn&apos;t find any Ideas for you.
+      | &#x9;  &#x9;
+      .scroll-marker(data-search='scroll-marker')
+        | Hunting down more results...
+    | &#x9;  
+    main.page-main
+      #posts-wrapper.container.posts
+        .day(data-component='PostCompact', data-posts-posted-today='true', data-posts-cutoff-index='9')
+          time.posts--date(datetime='2015-01-09')
+            h4.posts--date--name Today
+            | &#x9;      January 9th
+          | &#x9;    
+          ul.posts-group(data-posts-list='true')
+            // Post Begin
+            li.post(ng-repeat='post in posts')
+              .post--content(data-href='/posts/{{post.slug}}', data-action='open-modal')
+                .(ng-click='toggleVote(post, this)', class="{{post.isvoted?'upvote m-upvoted':'upvote'}}", data-component='VoteMarker', data-vote-id='{{post.objectID}}', data-vote-type='post')
+                  a.upvote-link
+                  | &#x9;        &#x9;&#x9;
+                  span.vote-count(data-vote-count='') {{post.vote_count}}
+                | &#x9;      &#x9;&#x9;
+                span.user-image-holder(data-popover='hover')
+                  a(href='http://localhost/{{post.author.username}}')
+                    img.twitter-rounded.user-image(data-component='LazyLoadElement', data-lazyload-src='{{post.author.avatar_url}}', src='{{post.author.avatar_url}}', width='30', height='30')
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  div(data-popover='content')
+                    .user-hover-card
+                      a(href='http://localhost/jmj')
+                        img.twitter-rounded.user-image(data-component='LazyLoadElement', data-lazyload-src='{{post.author.avatar_url}}', src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==', width='80', height='80')
+                      | &#x9;    &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      .user-maker M
+                      | &#x9;  &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      h3 {{post.author.name}}
+                      | &#x9;  &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      h4.user-headline Drive
+                      | &#x9;  &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      h4.user-username
+                        a(href='http://localhost/{{post.author.username}}') {{post.author.username}}
+                      | &#x9;  &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      a.button.v-green(data-component='FollowMarker', data-follow-id='{{post.author.id}}', data-follow-text='Follow', data-unfollow-text='Unfollow', href='http://localhost/#')
+                        | Follow
+                | &#x9;      
+                | &#x9;      &#x9;&#x9;
+                .post--actions
+                  span.collections-popover-trigger(data-component='CollectedPostMarker', data-collect-post-id='{{post.objectID}}', data-popover='click', data-require-login='true', data-popover-href='/my/collections?post_id=13036')
+                    a(title="Add '{{post.name}}' to your collections", href='http://localhost/#')
+                      span.collection-popover-trigger--elements-not-collected
+                        svg.collections-popover-trigger--icon(width='15px', height='14px', viewbox='0 0 15 14', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', xmlns:sketch='http://www.bohemiancoding.com/sketch/ns')
+                          g#Flow(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd', sketch:type='MSPage')
+                            g#Home---Add-to-Collection-Button-on-Hover(sketch:type='MSArtboardGroup', transform='translate(-1144.000000, -776.000000)', fill='#C8C0B1')
+                              path#Add-to-Collection-icon(d='M1157,786 L1157,784.990778 C1157,784.450975 1156.55228,784 1156,784 C1155.44386,784 1155,784.443586 1155,784.990778 L1155,786 L1153.99078,786 C1153.45098,786 1153,786.447715 1153,787 C1153,787.556135 1153.44359,788 1153.99078,788 L1155,788 L1155,789.009222 C1155,789.549025 1155.44772,790 1156,790 C1156.55614,790 1157,789.556414 1157,789.009222 L1157,788 L1158.00922,788 C1158.54902,788 1159,787.552285 1159,787 C1159,786.443865 1158.55641,786 1158.00922,786 L1157,786 Z M1144,777 C1144,776.447715 1144.44749,776 1144.9985,776 L1156.0015,776 C1156.55296,776 1157,776.443865 1157,777 C1157,777.552285 1156.55251,778 1156.0015,778 L1144.9985,778 C1144.44704,778 1144,777.556135 1144,777 Z M1144,782 C1144,781.447715 1144.44749,781 1144.9985,781 L1156.0015,781 C1156.55296,781 1157,781.443865 1157,782 C1157,782.552285 1156.55251,783 1156.0015,783 L1144.9985,783 C1144.44704,783 1144,782.556135 1144,782 Z M1144,787 C1144,786.447715 1144.45304,786 1144.99703,786 L1151.00297,786 C1151.55361,786 1152,786.443865 1152,787 C1152,787.552285 1151.54696,788 1151.00297,788 L1144.99703,788 C1144.44639,788 1144,787.556135 1144,787 Z', sketch:type='MSShapeGroup')
+                        | &#x9;&#x9;      &#x9;&#x9;&#x9;&#x9;
+                        span.collections-popover-trigger--text Collect
+                      | &#x9;    
+                      | &#x9;    &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.collection-popover-trigger--elements-collected
+                        svg.collections-popover-trigger--icon(width='17px', height='14px', viewbox='0 0 17 14', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', xmlns:sketch='http://www.bohemiancoding.com/sketch/ns')
+                          g#Flow(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd', sketch:type='MSPage')
+                            g#Profile---Your-Collection-Page(sketch:type='MSArtboardGroup', transform='translate(-1142.000000, -717.000000)', fill='#DC5425')
+                              g#Posts(sketch:type='MSLayerGroup', transform='translate(336.000000, 475.000000)')
+                                g#added-to-collection(transform='translate(806.000000, 92.000000)', sketch:type='MSShapeGroup')
+                                  path#Rectangle-319(d='M11.0355339,160.863961 L9.62118422,159.449611 C9.22796861,159.056396 8.59763107,159.059223 8.20710678,159.449747 C7.81385983,159.842994 7.81652154,160.473376 8.20697066,160.863825 L10.3285632,162.985417 C10.5248186,163.181673 10.7801422,163.279272 11.035237,163.279253 C11.2911998,163.279828 11.5458806,163.182041 11.7405407,162.987381 L15.9873814,158.740541 C16.3720431,158.355879 16.3758057,157.718951 15.9852814,157.328427 C15.5920344,156.93518 14.9625323,156.936963 14.5731678,157.326327 L11.0355339,160.863961 Z M0,151 C0,150.447715 0.447489426,150 0.998502329,150 L12.0014977,150 C12.5529553,150 13,150.443865 13,151 C13,151.552285 12.5525106,152 12.0014977,152 L0.998502329,152 C0.44704472,152 0,151.556135 0,151 Z M0,156 C0,155.447715 0.447489426,155 0.998502329,155 L12.0014977,155 C12.5529553,155 13,155.443865 13,156 C13,156.552285 12.5525106,157 12.0014977,157 L0.998502329,157 C0.44704472,157 0,156.556135 0,156 Z M0,161 C0,160.447715 0.446771324,160 1.00138006,160 L5.49861994,160 C6.05166687,160 6.5,160.443865 6.5,161 C6.5,161.552285 6.05322868,162 5.49861994,162 L1.00138006,162 C0.448333126,162 0,161.556135 0,161 Z')
+                        | &#x9;      &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.collections-popover-trigger--text Collected
+                  | &#x9;        &#x9;&#x9;
+                  a.post--actions--comments.view-discussion(href='http://localhost/posts/{{post.slug}}')
+                    svg.comment-image(width='16px', height='14px', viewbox='0 0 16 14', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', xmlns:sketch='http://www.bohemiancoding.com/sketch/ns')
+                      g#Flow(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd', sketch:type='MSPage')
+                        g(sketch:type='MSArtboardGroup', transform='translate(-1183.000000, -853.000000)', fill='#BAB5B3', opacity='0.5')
+                          g#Posts(sketch:type='MSLayerGroup', transform='translate(325.000000, 245.000000)')
+                            path#Oval-44(d='M859.869393,618.060241 C858.702638,616.995887 858,615.623267 858,614.125 C858,610.742256 861.581722,608 866,608 C870.418278,608 874,610.742256 874,614.125 C874,617.507744 870.418278,620.25 866,620.25 C864.901824,620.25 863.855328,620.080587 862.902667,619.774035 C861.343849,620.619428 858.296389,621.736418 858.296389,621.736418 C858.296389,621.736418 859.315604,619.438452 859.869393,618.060241 Z', sketch:type='MSShapeGroup')
+                    | &#x9;          &#x9;
+                    span.comment-count {{post.comment_count}}
+                | &#x9;      &#x9;&#x9;
+                .url
+                  a.post-url.title(target='_blank', href='http://localhost/l/ff90d680a4') {{post.name}}
+                  | &#x9;        &#x9;&#x9;
+                  span.post-tagline.description {{post.tagline}}
+            // Post End
+      | &#x9;
+      #page_end Hunting down older posts...
+    | &#x9;  
+    | &#x9;  
+    #js-modal.modal.u-hide
+      a.modal--control.v-close(href='http://localhost/#', data-modal='close', title='Close')
+        svg(width='12px', height='12px', viewbox='0 0 12 12', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+          g#Page-1(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd')
+            path#Rectangle-402(d='M5,5 L5,-0.99912834 C5,-1.55536914 5.4477153,-2 6,-2 C6.5561352,-2 7,-1.5518945 7,-0.99912834 L7,5 L12.9991283,5 C13.5553691,5 14,5.4477153 14,6 C14,6.5561352 13.5518945,7 12.9991283,7 L7,7 L7,12.9991283 C7,13.5553691 6.5522847,14 6,14 C5.4438648,14 5,13.5518945 5,12.9991283 L5,7 L-0.99912834,7 C-1.55536914,7 -2,6.5522847 -2,6 C-2,5.4438648 -1.5518945,5 -0.99912834,5 L5,5 L5,5 Z', fill='#534540', transform='translate(6.000000, 6.000000) rotate(45.000000) translate(-6.000000, -6.000000) ')
+      | &#x9;    
+      a.modal--control.v-admin.m-visible-to-moderator(href='http://localhost/#', data-action='toggle', data-toggle='modal-post--admin', title='Admin tools')
+        svg(width='16px', height='10px', viewbox='0 0 16 10', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+          g#Page-1(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd')
+            path#crown(d='M16,0.973248353 L16,8.79862142 C16,9.46249797 15.4969325,10 14.8773006,10 L1.12269939,10 C0.503067485,10 0,9.46249797 0,8.79862142 L0,0.960118533 C0,0.449696758 0.595858896,0.21828367 0.901840491,0.609716446 L3.43788344,3.85934704 C3.72776074,4.23108508 4.25920245,4.23682938 4.5559816,3.87247686 L7.51763804,0.235516559 C7.77300613,-0.0779579069 8.22776074,-0.0787785207 8.48312883,0.234695946 L11.4723926,3.88806852 C11.7714724,4.25324166 12.303681,4.24503552 12.5927914,3.87083563 L15.0966258,0.626128722 C15.4010736,0.23141349 16,0.462005964 16,0.973248353', fill='#000000')
+      | &#x9;    
+      .modal--sidebar
+      | &#x9;    
+      .modal--content
+      | &#x9;    
+      .modal--loader
+    | &#x9;  
+    #js-fullscreen.fullscreen-overlay.u-hide
+      a.fullscreen-overlay--close(href='http://localhost/#', title='Close')
+        svg(width='12px', height='12px', viewbox='0 0 12 12', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+          g#Page-1(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd')
+            path#Rectangle-402(d='M5,5 L5,-0.99912834 C5,-1.55536914 5.4477153,-2 6,-2 C6.5561352,-2 7,-1.5518945 7,-0.99912834 L7,5 L12.9991283,5 C13.5553691,5 14,5.4477153 14,6 C14,6.5561352 13.5518945,7 12.9991283,7 L7,7 L7,12.9991283 C7,13.5553691 6.5522847,14 6,14 C5.4438648,14 5,13.5518945 5,12.9991283 L5,7 L-0.99912834,7 C-1.55536914,7 -2,6.5522847 -2,6 C-2,5.4438648 -1.5518945,5 -0.99912834,5 L5,5 L5,5 Z', fill='#534540', transform='translate(6.000000, 6.000000) rotate(45.000000) translate(-6.000000, -6.000000) ')
+      | &#x9;    
+      .fullscreen-overlay--content
+      | &#x9;    
+      .fullscreen-overlay--loader
+    | &#x9;    
+    .signin-prompt
+      .modal-bg.close-account-prompt
+      | &#x9;  
+        h2 Please sign in to do this
+        | &#x9;    
+        a.button.v-twitter(href='http://localhost/auth/twitter') Login with Twitter
+    | &#x9;    
+    .signup-to-post-prompt
+      .modal-bg.close-signup-to-post-prompt
+      | &#x9;  
+      .modal-body
+        h2 Hey there! Please sign in before posting a product.
+        | &#x9;    
+        a.button.v-twitter(href='http://localhost/auth/twitter') Login with Twitter=user
+    | &#x9;  
+    .contactus-prompt
+      .modal-bg.close-account-prompt
+      | &#x9;  
+      .modal-body
+        h2 Sorry! It looks like there&apos;s a problem.
+        | &#x9;    
+        p
+          | Contact us at 
+          a(href='mailto: hello@producthunt.com') hello@producthunt.com
+          |  for help.
+        | &#x9;    
+        a.button.close-contactus-prompt(href='http://localhost/#') close
+    | &#x9;
+    | &#x9;
+    | &#x9;
+    script(src='js/sample_data.js')
+    | &#x9;
+    script(src='bower_components/angularjs/angular.js')
+    |   
+    script(src='js/controllers.js')
