@@ -12,7 +12,14 @@ ideaHuntApp.service('ideaService', function($http){
 		console.log('Inside IdeaService.getIdeas');
 		return $http.get('http://toprecur.cloudapp.net/ideas');
 	};
+
+	this.toggleIdeaVote = function(ideaId){
+		console.log("Inside toggle idea vote");
+		var voteURL = 'http://toprecur.cloudapp.net/ideas/' + ideaId + '/vote'
+		return $http.post(voteURL);
+	};
 });
+
 // End of ideaService 
 ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
  	console.log('Inside IdeaHuntListCtrl');
@@ -62,8 +69,18 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 	// toggle vote
 	$scope.toggleVote = function(post) {
 		console.log('Inside toggleVote');
-		post.isVote = !post.isVote;
-		console.log(post);
+		ideaService.toggleIdeaVote(post.id).then(
+			function(data){
+				console.log("ideaService toggleIdeaVote success ");
+				console.log(data);
+				post.isVote = !post.isVote;
+				console.log(post);
+			},
+			function(err){
+				console.log("Unable to toggle idea vote due to error " );
+				console.log(err);
+			}
+		);
 	};
 
 	// Populate ideas in front end.

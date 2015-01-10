@@ -328,6 +328,79 @@ app.post('/ideas', function(req, res){
 
 
 });
+
+//Vote
+app.post('/ideas/:ideaId/vote', function(req, res){
+	var ideadId = req.param('ideaId');
+	console.log('Inside post vote for ideaId : ' + ideaId);
+
+	// Check reques is authenticate or not
+	if(req.isAuthenticated()) {
+		console.log('Authenticate  , default index.jade with extra user');
+		var response = {'status' : 'fail'};
+
+		// Retrieve user by session.
+		User.findById(req.session.passport.user, function(err, user){
+			if(err) {
+				console.log(err);
+				response.err = err;
+				// send response fail
+				res.send(response);
+			} else {
+				console.log('user fetched is ' + user);
+				// Retrieve idea by path paremeter
+				var idea = Idea.findById(ideaId)
+				.populate('votes')
+				.exec(ideaId, function(err, idea){
+					if(err){ //fail
+						console.log('Unable to find idea due to error : ' + err);
+						response.err = err;
+						// send response fail
+						res.send(response);
+					} else { //success
+						// Check idea votes , if it already have user voted or not
+						var voted = false;
+						for(var i=0;i<idea.votes.length;i++){
+							if(idea.votes[i]._id == user._id){
+								voted = true;
+								break;
+							}
+						}
+
+						// user already voted, so  remove it
+						if(voted){
+							console.log("Already voted, so remove it");
+							idea.votes[i].splice(i,1);
+						}else { // does not voted, so add it
+							console.log("idea was not voted, so adding user");
+							idea.votes.push(user);
+						}
+						// Save idea
+						idea.save(function(err, idea){
+							if(err){
+								console.log('Unable to save idea due to err' + util.inspect(err));
+								response.err = err;
+							}else {
+								//success response
+								response.data = idea;
+								response.status = 'success';
+							}
+							//Send response
+							res.send(response);
+						});	
+					}
+					// Send response
+					res.send(response);
+				}); // end of idea retrieval				
+			} // end of user retrieval else
+	 	}); // end of user retrieval call
+	}else { //not authenticate -> so fail
+		console.log('Authenticate not , default index.jade');
+		// Send fail response		
+		var response = {'status' : 'fail', description : 'To vote you need to login'};
+		res.send(response);
+	}
+});
 // END OF API
 
 //home page
