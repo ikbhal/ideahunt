@@ -79,6 +79,8 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 					console.log("ideaService toggleIdeaVote success ");
 					console.log(data);
 					post.isVote = !post.isVote;
+					// set votes properly
+					post.votes = data.data.votes;
 					console.log(post);
 				},
 				function(err){
