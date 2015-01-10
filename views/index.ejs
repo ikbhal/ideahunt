@@ -233,7 +233,7 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 	    		<div class="post--content" data-href="/posts/{{post.slug}}" data-action="open-modal">
 	      		<div ng-click="toggleVote(post, this)" class="{{post.isvoted?'upvote m-upvoted':'upvote'}}" data-component="VoteMarker" data-vote-id="{{post.objectID}}" data-vote-type="post">
 	        		<a  class="upvote-link"></a>
-	        		<span class="vote-count" data-vote-count="">{{post.vote_count}}</span>
+	        		<span class="vote-count" data-vote-count="">{{post.votes.length}}</span>
 	      		</div>
 
 	      		<span data-popover="hover" class="user-image-holder">
