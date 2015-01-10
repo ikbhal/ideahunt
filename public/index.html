@@ -23,15 +23,15 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 		<div ng-class="addPostFormClass">
 		  <div class="modal-content">
 			  <header class="modal--header">
-			    <h1 class="modal--header--title">Post a new product</h1>
+			    <h1 class="modal--header--title">Post a new idea</h1>
 			    <p class="modal--header--description">Find something new and interesting? Hunt it!</p>
 			  </header>
 			  <div class="new-post">
 			    <form class="new_submission" id="new_submission">
 			    	<input name="utf8" type="hidden" value="✓">
 			    	<input type="hidden" name="authenticity_token" value="AmF6DsT1N7GoWBTvUql9FtObZH5HFKvJdngClwL2sXvFc39Py5TqGkDvxpW58z202EuibrUoDA7EFhRAPfcb4A==">
-			    	<input placeholder="Product URL" class="input" type="url" ng-model="newPost.url" id="submission_url"><br>
-			      <input placeholder="Product Name" class="product-name input" type="text" ng-model="newPost.name" id="submission_name"><br>
+			    	<input placeholder="Idea URL" class="input" type="url" ng-model="newPost.url" id="submission_url"><br>
+			      <input placeholder="Idea Name" class="product-name input" type="text" ng-model="newPost.name" id="submission_name"><br>
 			      <input placeholder="Tagline" class="product-tagline input" type="text" ng-model="newPost.tagline" id="submission_tagline"><br>
 			      <input type="submit" name="commit" value="Hunt it" class="new_post_submit button v-green" ng-click="addPost()">
 					</form>
@@ -183,8 +183,8 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 				<!--Post Begin-->
 	      <li ng-repeat = "post in posts" class="post">
 	    		<div class="post--content" data-href="/posts/{{post.slug}}" data-action="open-modal">
-	      		<div class="upvote" data-component="VoteMarker" data-vote-id="{{post.objectID}}" data-vote-type="post">
-	        		<a href="http://localhost/#" class="upvote-link"></a>
+	      		<div ng-click="toggleVote(post, this)" class="{{post.isvoted?'upvote m-upvoted':'upvote'}}" data-component="VoteMarker" data-vote-id="{{post.objectID}}" data-vote-type="post">
+	        		<a  class="upvote-link"></a>
 	        		<span class="vote-count" data-vote-count="">{{post.vote_count}}</span>
 	      		</div>
 

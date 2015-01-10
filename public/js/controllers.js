@@ -28,6 +28,22 @@ phonecatApp.controller('IdeaHuntListCtrl', function ($scope) {
 		$scope.bodyExtraClassOnAddPostForm ="";
 	};
 
+	// Up vote the post by member
+	$scope.upVotePost = function() {
+
+	};
+
+	// remove the vote for the post by voted by member.
+	$scope.downvotePost = function() {
+
+	};
+
+	// toggle vote
+	$scope.toggleVote = function(post) {
+		console.log("Inside toggleVote");
+		post.isVote = !post.isVote;
+		console.log(post);
+	};
 	// Handle add post.
 	$scope.addPost = function(){
 		console.log("Inside add post");
