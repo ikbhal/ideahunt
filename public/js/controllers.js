@@ -19,10 +19,12 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 
 	$scope.showUserMenuFlag = false;
 	
-	$scope.posts = data.hits;
+	//$scope.posts = data.hits;
+
+	$scope.posts = [];
 	
 	// Call get ideas and populate front end.
-	$scope.getIdeas();
+	//$scope.getIdeas();
 
 	$scope.addPostFormClass ='new-post-modal hidden';
 	$scope.bodyExtraClassOnAddPostForm  ='';
@@ -72,7 +74,7 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 		console.log('Calling ideaService.addIdea ');
 		ideaService.addIdea($scope.newPost).then(function(idea){
 				// Add new post to post.
-			$scope.posts.push($scope.newPost);
+			$scope.posts.push(idea);
 
 			// Reset newPost
 			$scope.newPost = {name:'', tagline:'', url:''};
@@ -88,7 +90,7 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 		});
 
 		// Populate ideas in front end.
-		$scope.getIdeas = function(){
+		$scope.populateIdeas = function(){
 			ideaService.getIdeas().then(
 				function(response){
 					$scope.posts = response.data;

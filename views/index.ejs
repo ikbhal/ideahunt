@@ -13,7 +13,7 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 	  </style>
 	  <link rel="stylesheet" href="css/typekit.css">
 </head>
-	<body class="posts-index {{bodyExtraClassOnAddPostForm}}" ng-app="ideaHuntApp" ng-controller="IdeaHuntListCtrl" >  
+	<body ng-init="populateIdeas()" class="posts-index {{bodyExtraClassOnAddPostForm}}" ng-app="ideaHuntApp" ng-controller="IdeaHuntListCtrl" >  
 	
 
 		<div ng-click="hideAddPostForm()" class="close-discussion-body close-discussion" id="close-discussion-panel"></div>
@@ -393,7 +393,10 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 	</div>
 
 
+	<!--
 	<script src="js/sample_data.js"></script>
+
+	-->
 	<script src="bower_components/angularjs/angular.js"></script>
   <script src="js/controllers.js"></script>		
   
