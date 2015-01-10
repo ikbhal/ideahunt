@@ -17,7 +17,7 @@ ideaHuntApp.service('ideaService', function($http){
 		console.log("Inside toggle idea vote");
 		var voteURL = 'http://toprecur.cloudapp.net/ideas/' + ideaId + '/vote'
 		console.log('userId:' + userId);
-		return $http.post(voteURL, userId);
+		return $http.post(voteURL, {'userId' : userId});
 	};
 });
 
