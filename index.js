@@ -338,7 +338,7 @@ app.post('/ideas/:ideaId/vote', function(req, res){
 	console.log('user' + util.inspect(userInput));
 	var userId = userInput.userId;
 	console.log('userId: ' + userId);
-	
+
 	// Check reques is authenticate or not
 	if(userId && userId != null) {
 		console.log('Authenticate  , default index.jade with extra user');
@@ -356,7 +356,7 @@ app.post('/ideas/:ideaId/vote', function(req, res){
 				// Retrieve idea by path paremeter
 				var idea = Idea.findById(ideaId)
 				.populate('votes')
-				.exec(ideaId, function(err, idea){
+				.exec(function(err, idea){
 					if(err){ //fail
 						console.log('Unable to find idea due to error : ' + err);
 						response.err = err;
