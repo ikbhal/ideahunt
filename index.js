@@ -395,7 +395,7 @@ app.post('/ideas/:ideaId/vote', function(req, res){
 						});	
 					}
 					// Send response
-					res.send(response);
+					//res.send(response);
 				}); // end of idea retrieval				
 			} // end of user retrieval else
 	 	}); // end of user retrieval call
