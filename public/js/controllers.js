@@ -71,19 +71,24 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 	$scope.toggleVote = function(post) {
 		console.log('Inside toggleVote for idea id: ' + post._id);
 		console.log(post);
-		console.log('user id: ' + userId);
-		ideaService.toggleIdeaVote(post._id, userId).then(
-			function(data){
-				console.log("ideaService toggleIdeaVote success ");
-				console.log(data);
-				post.isVote = !post.isVote;
-				console.log(post);
-			},
-			function(err){
-				console.log("Unable to toggle idea vote due to error " );
-				console.log(err);
-			}
-		);
+
+		if (typeof userId != 'undefined'){
+			console.log('user id: ' + userId);
+			ideaService.toggleIdeaVote(post._id, userId).then(
+				function(data){
+					console.log("ideaService toggleIdeaVote success ");
+					console.log(data);
+					post.isVote = !post.isVote;
+					console.log(post);
+				},
+				function(err){
+					console.log("Unable to toggle idea vote due to error " );
+					console.log(err);
+				}
+			);
+		}else {
+			alert('Please login to vote idea.');
+		}
 	};
 
 	// Populate ideas in front end.
