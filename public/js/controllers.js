@@ -82,12 +82,12 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 			//Hide addPost form
 			$scope.hideAddPostForm();
 
-		},
-
-		function(err){
-			console.log('Unable to add idea due to error');
-			console.log(err);
+			},
+			function(err){
+				console.log('Unable to add idea due to error');
+				console.log(err);
 		});
+
 
 		// Populate ideas in front end.
 		$scope.populateIdeas = function(){
@@ -104,10 +104,14 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 				}
 			);
 		};
+
+		//calling populate ideas 
+		$scope.populateIdeas();
+
 	};
 
-	//calling populate ideas 
-	$scope.populateIdeas();
+	
+	
 
 	$scope.toggleUserMenu = function(){
 		console.log('Inside toggleUserMenu');
