@@ -375,7 +375,7 @@ app.post('/ideas/:ideaId/vote', function(req, res){
 						// user already voted, so  remove it
 						if(voted){
 							console.log("Already voted, so remove it");
-							idea.votes[i].splice(i,1);
+							idea.votes.splice(i,1);
 						}else { // does not voted, so add it
 							console.log("idea was not voted, so adding user");
 							idea.votes.push(user);
