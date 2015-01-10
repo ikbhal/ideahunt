@@ -1,6 +1,7 @@
 var http = require('http'),
 	express = require('express'),
 	app = express();
+var mongoose = require('mongoose');
 
 // Loads configuration files
 var nconf = require('nconf');
