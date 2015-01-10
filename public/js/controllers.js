@@ -91,8 +91,11 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 
 		// Populate ideas in front end.
 		$scope.populateIdeas = function(){
+			console.log('Inside populateIdeas()');
 			ideaService.getIdeas().then(
 				function(response){
+					console.log('Got get ideas response from server is ');
+					console.log(response);
 					$scope.posts = response.data;
 				},
 				function(err){
@@ -102,6 +105,9 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 			);
 		};
 	};
+
+	//calling populate ideas 
+	$scope.populateIdeas();
 
 	$scope.toggleUserMenu = function(){
 		console.log('Inside toggleUserMenu');
