@@ -3,19 +3,19 @@ var ideaHuntApp = angular.module('ideaHuntApp', []);
 // Begin of ideaService 
 ideaHuntApp.service('ideaService', function($http){
 	this.addIdea = function(idea){
-		console.log("Inside IdeaService.addIdea");
+		console.log('Inside IdeaService.addIdea');
 		console.log(idea);
 		return $http.post('http://toprecur.cloudapp.net/ideas', idea);
 	};
 
 	this.getIdeas = function(){
-		console.log("Inside IdeaService.getIdeas");
+		console.log('Inside IdeaService.getIdeas');
 		return $http.get('http://toprecur.cloudapp.net/ideas');
 	};
 });
 // End of ideaService 
 ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
- 	console.log("Inside IdeaHuntListCtrl");
+ 	console.log('Inside IdeaHuntListCtrl');
 
 	$scope.showUserMenuFlag = false;
 	
@@ -24,8 +24,8 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 	// Call get ideas and populate front end.
 	$scope.getIdeas();
 
-	$scope.addPostFormClass ="new-post-modal hidden";
-	$scope.bodyExtraClassOnAddPostForm  ="";
+	$scope.addPostFormClass ='new-post-modal hidden';
+	$scope.bodyExtraClassOnAddPostForm  ='';
 
 	// ToDO: test author
 	var author = $scope.posts[0].author;
@@ -34,17 +34,17 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 
 	// Show add post form
 	$scope.showAddPostForm = function(){
-		console.log("Inside showAddPostForm");
-		$scope.addPostFormClass ="new-post-modal";
-		$scope.bodyExtraClassOnAddPostForm ="showing-discussion";
+		console.log('Inside showAddPostForm');
+		$scope.addPostFormClass ='new-post-modal';
+		$scope.bodyExtraClassOnAddPostForm ='showing-discussion';
 
 	};
 
 	// Hide add post form
 	$scope.hideAddPostForm = function(){
-		console.log("Inside hideAddPostForm");
-		$scope.addPostFormClass ="new-post-modal hidden";
-		$scope.bodyExtraClassOnAddPostForm ="";
+		console.log('Inside hideAddPostForm');
+		$scope.addPostFormClass ='new-post-modal hidden';
+		$scope.bodyExtraClassOnAddPostForm ='';
 	};
 
 	// Up vote the post by member
@@ -59,17 +59,17 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 
 	// toggle vote
 	$scope.toggleVote = function(post) {
-		console.log("Inside toggleVote");
+		console.log('Inside toggleVote');
 		post.isVote = !post.isVote;
 		console.log(post);
 	};
 
 	// Handle add post.
 	$scope.addPost = function(){
-		console.log("Inside add post");
+		console.log('Inside add post');
 		console.log($scope.newPost);
 
-		console.log("Calling ideaService.addIdea ");
+		console.log('Calling ideaService.addIdea ');
 		ideaService.addIdea($scope.newPost).then(function(idea){
 				// Add new post to post.
 			$scope.posts.push($scope.newPost);
@@ -83,7 +83,7 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 		},
 
 		function(err){
-			console.log("Unable to add idea due to error");
+			console.log('Unable to add idea due to error');
 			console.log(err);
 		});
 
@@ -94,7 +94,7 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 					$scope.posts = response.data;
 				},
 				function(err){
-					console.log("Unable to get idea from idea service ");
+					console.log('Unable to get idea from idea service ');
 					console.log(err);
 				}
 			);
@@ -102,7 +102,7 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 	};
 
 	$scope.toggleUserMenu = function(){
-		console.log("Inside toggleUserMenu");
+		console.log('Inside toggleUserMenu');
 		$scope.showUserMenuFlag = !$scope.showUserMenuFlag;
 	};
 });
