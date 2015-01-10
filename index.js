@@ -177,6 +177,29 @@ app.get('/error', function(req, res){
 	req.send("Error occured");
 });
 
+app.get('/ping', function(req, res){
+	res.end('pong');
+});
+
+//home page
+app.get('/', function(req, res){
+	console.log("route for / ");
+	if(req.isAuthenticated()) {
+		console.log("Authenticate  , default index.jade with extra user");
+		User.findById(req.session.passport.user, function(err, user){
+			if(err) {
+				console.log(err);
+			} else {
+				console.log("user fetched is " + user);
+				res.render('index', {user: user});
+			}
+		});
+	}else {
+		console.log("Authenticate not , default index.jade");
+		res.render('index');
+	}
+});
+
 http.createServer(app).listen(app.get('port'),function(err){
 	console.log("Started server");
 });

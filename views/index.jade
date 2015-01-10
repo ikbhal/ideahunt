@@ -17,6 +17,7 @@ head
     link(rel='stylesheet', href='css/typekit.css')
   | &#x9;
   body.posts-index(class='{{bodyExtraClassOnAddPostForm}}', ng-app='ideaHuntApp', ng-controller='IdeaHuntListCtrl')
+    = user
     #close-discussion-panel.close-discussion-body.close-discussion(ng-click='hideAddPostForm()')
     // Post New Begin
     .show-post-modal.hidden(ng-click='hideAddPostForm()')
