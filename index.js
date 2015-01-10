@@ -249,6 +249,59 @@ app.get('/ping', function(req, res){
 	res.end('pong');
 });
 
+// API
+app.post('/ideas', function(req, res){
+	console.log("Handling post /ideas ->Adding idea");
+
+	// Get data
+	var ideaInput = req.body;
+
+	// Get user
+	if(req.isAuthenticated()) {
+		console.log("idea post  , default index.jade with extra user");
+		User.findById(req.session.passport.user, function(err, user){
+			if(err) {
+				console.log(err);
+			} else {
+				console.log("user fetched is " + user);
+
+				// Create idea object
+				var idea = new Idea();
+				idea.name = ideaInput.name;
+				idea.tagline = ideaInput.tagline;
+				idea.url = ideaInput.url;
+				idea.shortened_link = ideaInput.url;// TODO we will generate later shorten url concept
+				idea.author = user;
+				
+
+				// Save Idea
+				idea.save(function(err, idea){
+					var response = {'status': 'fail'};
+					if(err){
+						console.log(err);
+						response.err = err;
+					}else{
+						console.log('*********Saved idea ...' + idea );
+						response.status = 'success';
+						response.data = idea;
+					}
+
+					// Send response;
+					res.send(response);
+
+				});
+			}
+		});
+	}else {
+		console.log("Authenticate not , default error response");
+		// Send response
+		res.send({'status': 'fail', 'description' :'Please login to add idea'});
+	}
+
+
+});
+// END OF API
+
 //home page
 app.get('/', function(req, res){
 	console.log("route for / ");
