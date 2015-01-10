@@ -345,7 +345,7 @@ app.post('/ideas/:ideaId/vote', function(req, res){
 		var response = {'status' : 'fail'};
 
 		// Retrieve user by session.
-		User.findById(req.session.passport.user, function(err, user){
+		User.findById(userId, function(err, user){
 			if(err) {
 				console.log(err);
 				response.err = err;
@@ -366,7 +366,7 @@ app.post('/ideas/:ideaId/vote', function(req, res){
 						// Check idea votes , if it already have user voted or not
 						var voted = false;
 						for(var i=0;i<idea.votes.length;i++){
-							if(idea.votes[i]._id == user._id){
+							if(idea.votes[i]._id == userId){
 								voted = true;
 								break;
 							}
