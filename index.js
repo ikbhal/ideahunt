@@ -59,15 +59,15 @@ passport.use(new TwitterStrategy({
   },
   function(token, tokenSecret, profile, done) {
 
-  		console.log("**********User twitter profile: " + util.inspect(profile));
+  		console.log('**********User twitter profile: ' + util.inspect(profile));
 
   		User.findOne({oauthID: profile.id}, function(err,user){
-				if(err) { console.log(err); done(err, null);};
+				if(err) { console.log(err); done(err, null);}
 				if(!err && user != null ){
 					done(null, user);
 				} else {
 
-					var user = new User({
+					 user = new User({
 						oauthID: profile.id,
 						id: profile.id,
 						name: profile.displayName,
@@ -79,11 +79,11 @@ passport.use(new TwitterStrategy({
 						created: Date.now()
 					});
 
-					console.log("********Before svaing user: " + user);
+					console.log('********Before svaing user: ' + user);
 					user.save(function(err, user){
 						if(err){
 							console.log(err);
-							done(err, nul);
+							done(err, null);
 						}else{
 							console.log('*********Saving user ...' + user );
 							done(null, user);
@@ -102,7 +102,7 @@ var favicon = require('serve-favicon');
 var methodOverride = require('method-override');
 var session = require('express-session');
 var errorHandler = require('errorhandler');
-var multer = require('multer');
+//var multer = require('multer');
 var bodyParser = require('body-parser');
 
 
@@ -112,7 +112,7 @@ var mongo = MONGO_URI;
 
 mongoose.connect(mongo, function(err){
 	if(err){
-		console.log("Unable to connec to mongo due to err: " + err);
+		console.log('Unable to connec to mongo due to err: ' + err);
 	} else {
 		console.log('Connect to mongo successfully');
 	}
@@ -156,6 +156,7 @@ var Idea = mongoose.model('Idea', {
 });
 
 //helper embedded documents only, dont save directly there is no  use.
+/*
 var Comment = mongoose.model('Comment', {
 	body : String,
 	by : {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
@@ -166,25 +167,25 @@ var Vote = mongoose.model('Vote', {
 	by:  {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
 	date: Date
 });
-
+*/
 /**
 Reference:
-"url":"http://app-stop.appspot.com/",
-      "name":"AppStop",
-      "tagline":"Turn your App Store listing into a landing page",
-      "comment_count":34,
-      "slug":"appstop",
-      "vote_count":514,
-      "shortened_link":"8f27df5e13",
-      "is_maker_inside":true,
-      "author":{  
-        "id":9445,
-        "name":"Erik Finman",
-        "headline":"CEO & Founder, Botangle",
-        "avatar_url":"//aws.producthunt.com/profile_image/72238/1416425489-cQDJmWIP80@2X.jpeg",
-        "link":"/erikfinman",
-        "username":"erikfinman",
-        "is_maker":true
+'url':'http://app-stop.appspot.com/',
+      'name':'AppStop',
+      'tagline':'Turn your App Store listing into a landing page',
+      'comment_count':34,
+      'slug':'appstop',
+      'vote_count':514,
+      'shortened_link':'8f27df5e13',
+      'is_maker_inside':true,
+      'author':{  
+        'id':9445,
+        'name':'Erik Finman',
+        'headline':'CEO & Founder, Botangle',
+        'avatar_url':'//aws.producthunt.com/profile_image/72238/1416425489-cQDJmWIP80@2X.jpeg',
+        'link':'/erikfinman',
+        'username':'erikfinman',
+        'is_maker':true
       },
 */
 app.set('views', __dirname + '/views');
@@ -202,12 +203,12 @@ app.set('port', (process.env.PORT || 80));
 app.use(express.static(path.join(__dirname , 'public')));
 app.use(errorHandler({dumpExceptions:true, showStack:true}));
 
-
+/*
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login')
 }
-
+*/
 /*
 app.get('/account', ensureAuthenticated, function(req, res){
   res.render('account', { user: req.user });
@@ -225,7 +226,7 @@ app.get('/auth/twitter/callback',
   passport.authenticate('twitter', { failureRedirect: '/error' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    console.log("twitte authentication succesful");
+    console.log('twitte authentication succesful');
     res.redirect('/');
   });
 
@@ -235,14 +236,14 @@ app.get('/logout', function(req, res){
 });
 
 app.get('/error', function(req, res){
-	console.log("Error occured");
-	req.send("Error occured");
+	console.log('Error occured');
+	res.send('Error occured');
 });
 
 // ejs test 
 app.get('/ejs', function(req, res){
 	var user = {name: 'ikbha', oauthID : '112123344'};
-	res.render('ejs', {"user": user});
+	res.render('ejs', {'user': user});
 });
 
 app.get('/ping', function(req, res){
@@ -252,15 +253,15 @@ app.get('/ping', function(req, res){
 // API
 // Get all ideas
 app.get('/ideas', function(req, res){
-	console.log("Inside get /ideas -> get ideas");
+	console.log('Inside get /ideas -> get ideas');
 
 	Idea.find(function(err, ideas){
 		var response = {'status': 'fail'};
 		if(err) {
-			console.log("Unable to get ideas due to error " + util.inspect(err));
+			console.log('Unable to get ideas due to error ' + util.inspect(err));
 			response.err = err;
 		} else { //Success 
-			console.log("ideas  fetched are " + ideas);
+			console.log('ideas  fetched are ' + ideas);
 
 			response.status = 'success';
 			response.data = ideas;
@@ -268,23 +269,25 @@ app.get('/ideas', function(req, res){
 		
 		// Send response
 		res.send(response);
+	});
+
 });
 
 // Add idea
 app.post('/ideas', function(req, res){
-	console.log("Handling post /ideas ->Adding idea");
+	console.log('Handling post /ideas ->Adding idea');
 
 	// Get data
 	var ideaInput = req.body;
 
 	// Get user
 	if(req.isAuthenticated()) {
-		console.log("idea post  , default index.jade with extra user");
+		console.log('idea post  , default index.jade with extra user');
 		User.findById(req.session.passport.user, function(err, user){
 			if(err) {
 				console.log(err);
 			} else {
-				console.log("user fetched is " + user);
+				console.log('user fetched is ' + user);
 
 				// Create idea object
 				var idea = new Idea();
@@ -314,7 +317,7 @@ app.post('/ideas', function(req, res){
 			}
 		});
 	}else {
-		console.log("Authenticate not , default error response");
+		console.log('Authenticate not , default error response');
 		// Send response
 		res.send({'status': 'fail', 'description' :'Please login to add idea'});
 	}
@@ -325,23 +328,27 @@ app.post('/ideas', function(req, res){
 
 //home page
 app.get('/', function(req, res){
-	console.log("route for / ");
+	console.log('route for / ');
 	if(req.isAuthenticated()) {
-		console.log("Authenticate  , default index.jade with extra user");
+		console.log('Authenticate  , default index.jade with extra user');
 		User.findById(req.session.passport.user, function(err, user){
 			if(err) {
 				console.log(err);
 			} else {
-				console.log("user fetched is " + user);
+				console.log('user fetched is ' + user);
 				res.render('index', {user: user});
 			}
 		});
 	}else {
-		console.log("Authenticate not , default index.jade");
+		console.log('Authenticate not , default index.jade');
 		res.render('index');
 	}
 });
 
 http.createServer(app).listen(app.get('port'),function(err){
-	console.log("Started server");
+	if(err){
+		console.log('Unable to start server due to error: ' + util.inspect(err));
+	}else {
+		console.log('Started server');
+	}
 });
