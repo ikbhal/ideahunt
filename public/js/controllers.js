@@ -30,9 +30,9 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 	$scope.bodyExtraClassOnAddPostForm  ='';
 
 	// ToDO: test author
-	var author = $scope.posts[0].author;
+	//var author = $scope.posts[0].author;
 	
-	$scope.newPost = {name:'', tagline:'', url:'', vote_count:0, comment_count:0, 'author': author};
+	$scope.newPost = {name:'', tagline:'', url:''};
 
 	// Show add post form
 	$scope.showAddPostForm = function(){
