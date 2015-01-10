@@ -66,47 +66,46 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 		console.log(post);
 	};
 
+	// Populate ideas in front end.
+	$scope.populateIdeas = function(){
+		console.log('Inside populateIdeas()');
+		ideaService.getIdeas().then(
+			function(response){
+				console.log('Got get ideas response from server is ');
+				console.log(response);
+				$scope.posts = response.data;
+			},
+			function(err){
+				console.log('Unable to get idea from idea service ');
+				console.log(err);
+			}
+		);
+	};
+
+	//calling populate ideas 
+	$scope.populateIdeas();
+
 	// Handle add post.
 	$scope.addPost = function(){
 		console.log('Inside add post');
 		console.log($scope.newPost);
 
 		console.log('Calling ideaService.addIdea ');
-		ideaService.addIdea($scope.newPost).then(function(idea){
-				// Add new post to post.
-			$scope.posts.push(idea);
+		ideaService.addIdea($scope.newPost).then(
+			function(idea){
+					// Add new post to post.
+				$scope.posts.push(idea);
 
-			// Reset newPost
-			$scope.newPost = {name:'', tagline:'', url:''};
+				// Reset newPost
+				$scope.newPost = {name:'', tagline:'', url:''};
 
-			//Hide addPost form
-			$scope.hideAddPostForm();
-
+				//Hide addPost form
+				$scope.hideAddPostForm();
 			},
 			function(err){
 				console.log('Unable to add idea due to error');
 				console.log(err);
 		});
-
-
-		// Populate ideas in front end.
-		$scope.populateIdeas = function(){
-			console.log('Inside populateIdeas()');
-			ideaService.getIdeas().then(
-				function(response){
-					console.log('Got get ideas response from server is ');
-					console.log(response);
-					$scope.posts = response.data;
-				},
-				function(err){
-					console.log('Unable to get idea from idea service ');
-					console.log(err);
-				}
-			);
-		};
-
-		//calling populate ideas 
-		$scope.populateIdeas();
 
 	};
 
