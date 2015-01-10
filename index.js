@@ -1,6 +1,7 @@
 var http = require('http'),
 	express = require('express'),
 	app = express();
+var util = require('util');
 var mongoose = require('mongoose');
 
 // Loads configuration files
@@ -69,6 +70,7 @@ passport.use(new TwitterStrategy({
     });
   }*/
 
+  		console.log("**********User twitter profile: " + util.inspect(profile));
   		User.findOne({oauthID: profile.id}, function(err,user){
 				if(err) { console.log(err); done(err, null);};
 				if(!err && user != null ){
@@ -85,7 +87,7 @@ passport.use(new TwitterStrategy({
 							console.log(err);
 							done(err, nul);
 						}else{
-							console.log('Saving user ...');
+							console.log('Saving user ...' );
 							done(null, user);
 						}
 					});
@@ -118,13 +120,74 @@ mongoose.connect(mongo, function(err){
 	}
 });
 
+/*
 var User = mongoose.model('User', 	{
 	oauthID: Number,
 	name: String,
 	created: Date
 });
+*/
+var User = mongoose.model('User', 	{
+	oauthID: Number,
+	name: String,
+	headline: String,
+	avatar_url: String,
+	link: String,
+	username: String,
+	is_maker: Boolean,
+	created: Date
+});
 
 
+var Idea = mongoose.model('Idea', {
+	name : String,
+	tagline : String,
+	url : String,
+	shortened_link: String,
+	author:  {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+	comments: [ {
+		body : String,
+		by : {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+		date : Date
+	}],
+	votes : [{
+		by:  {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+		date: Date
+	}]
+});
+
+//helper embedded documents only, dont save directly there is no  use.
+var Comment = mongoose.model('Comment', {
+	body : String,
+	by : {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+	date : Date
+});
+
+var Vote = mongoose.model('Vote', {
+	by:  {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+	date: Date
+});
+
+/**
+Reference:
+"url":"http://app-stop.appspot.com/",
+      "name":"AppStop",
+      "tagline":"Turn your App Store listing into a landing page",
+      "comment_count":34,
+      "slug":"appstop",
+      "vote_count":514,
+      "shortened_link":"8f27df5e13",
+      "is_maker_inside":true,
+      "author":{  
+        "id":9445,
+        "name":"Erik Finman",
+        "headline":"CEO & Founder, Botangle",
+        "avatar_url":"//aws.producthunt.com/profile_image/72238/1416425489-cQDJmWIP80@2X.jpeg",
+        "link":"/erikfinman",
+        "username":"erikfinman",
+        "is_maker":true
+      },
+*/
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(favicon(__dirname + '/public/favicon.ico'));
