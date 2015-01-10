@@ -85,6 +85,50 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 	        <li>
 	        	<% if(typeof user !== 'undefined'){%>
 	        		<p><%= user.name%>
+	        		<!-- Begin User logged in Egg -->
+							<li data-popover="click" ng-click="toggleUserMenu()" class="m-active">
+							  <a href="#" class="header--triangle">
+							    <img class="twitter-rounded user-image" src="//aws.producthunt.com/profile_image/88270/1416508748-default_profile_330@2X.png" alt="1416508748 default profile 330@2x" width="30" height="30">
+							      <svg width="12px" height="7px" viewBox="0 0 12 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+							    		<g transform="translate(-1214.000000, -160.000000)">
+							        	<g transform="translate(108.000000, 126.000000)">
+							            <path d="M1111.99823,40.244276 C1111.74349,40.243968 1111.48933,40.1461832 1111.29499,39.9518475 L1107.04815,35.7050068 C1106.66349,35.320345 1106.65973,34.6834175 1107.05025,34.2928932 C1107.4435,33.8996463 1108.073,33.9014287 1108.46237,34.2907932 L1112,37.8284271 L1115.53763,34.2907932 C1115.9223,33.9061315 1116.55922,33.9023689 1116.94975,34.2928932 C1117.34299,34.6861402 1117.34121,35.3156423 1116.95185,35.7050068 L1112.70501,39.9518475 C1112.51302,40.1438339 1112.25819,40.2409363 1112.00252,40.2414902 Z" fill="#CCC8C7"></path>
+							        	</g>
+							    		</g>
+										</svg>
+							   </a>
+							</li>
+	        		<!-- End User logged in Egg -->
+
+	        		<!-- Begin user profile, logout popup  menu -->
+	        		<div class="popover"  style="display: none; left: 1019.34375px; top: 60px;">
+							  <div class="popover--arrow"></div>
+							  <div class="popover--content">
+		              <ul class="dropdown-menu--list">
+		                <li><a href="/iqbalforallp">My Profile</a></li>
+
+		                  <li><a href="/iqbalforallp/collections">My Collections</a></li>
+
+		                <li class="u-hidden-on-medium-or-large-screen">
+		                    <a href="/submissions/new">Post a Product</a>
+		                </li>
+
+
+		                <li class="u-hidden-on-medium-or-large-screen">
+		                  <a class="show-notifications" data-action="open-modal" href="/notifications">Notifications</a>
+		                </li>
+
+		                <li><a href="/my/settings/edit">Settings</a></li>
+
+		                  <li><a href="/v1/oauth/applications">API Dashboard</a></li>
+
+		                <li><a href="/logout">Log out</a></li>
+		              </ul>
+							  </div>
+							</div>
+							<!-- End user profile, logout popup  menu -->
+
+
 	        	<% }else { %>
 	       	  <a href="auth/twitter">Log in</a>
 	       	  <% }%>
