@@ -4207,7 +4207,7 @@ height:20px;
 }
 
 .popover {
-display:none;
+/*display:none;*/
 position:absolute;
 z-index:101;
 background:#fff;
