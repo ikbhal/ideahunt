@@ -64,7 +64,7 @@ ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
 		console.log("Inside add post");
 		console.log($scope.newPost);
 
-		Console.log("Calling ideaService.addIdea ");
+		console.log("Calling ideaService.addIdea ");
 		ideaService.addIdea($scope.newPost).then(function(idea){
 				// Add new post to post.
 			$scope.posts.push($scope.newPost);
