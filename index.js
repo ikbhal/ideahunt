@@ -255,7 +255,11 @@ app.get('/ping', function(req, res){
 app.get('/ideas', function(req, res){
 	console.log('Inside get /ideas -> get ideas');
 
-	Idea.find(function(err, ideas){
+	Idea.find()
+	.populate('auhtor')
+	.populate('comments')
+	.populate('votes')
+	.exec(function(err, ideas){
 		var response = {'status': 'fail'};
 		if(err) {
 			console.log('Unable to get ideas due to error ' + util.inspect(err));
