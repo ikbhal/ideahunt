@@ -58,36 +58,33 @@ passport.use(new TwitterStrategy({
     callbackURL: TWITTER_CALLBACK_URL
   },
   function(token, tokenSecret, profile, done) {
-  	/*
- // asynchronous verification, for effect...
-    process.nextTick(function () {
-      
-      // To keep the example simple, the user's Twitter profile is returned to
-      // represent the logged-in user.  In a typical application, you would want
-      // to associate the Twitter account with a user record in your database,
-      // and return that user instead.
-      return done(null, profile);
-    });
-  }*/
 
-  		console.log("**********User twitter profile: " + util.inspect(profile));
+  		//console.log("**********User twitter profile: " + util.inspect(profile));
   		User.findOne({oauthID: profile.id}, function(err,user){
 				if(err) { console.log(err); done(err, null);};
 				if(!err && user != null ){
 					done(null, user);
 				} else {
+
 					var user = new User({
 						oauthID: profile.id,
+						id: profile.id,
 						name: profile.displayName,
+						headline: profile._json.description,
+						avatar_url: profile.profile_image_url,
+						link: '/'+profile.username,
+						username: profile.username,
+						is_maker: false,
 						created: Date.now()
 					});
 
+					console.log("********Before svaing user: " + user);
 					user.save(function(err, user){
 						if(err){
 							console.log(err);
 							done(err, nul);
 						}else{
-							console.log('Saving user ...' );
+							console.log('*********Saving user ...' + user );
 							done(null, user);
 						}
 					});
@@ -129,6 +126,7 @@ var User = mongoose.model('User', 	{
 */
 var User = mongoose.model('User', 	{
 	oauthID: Number,
+	id: String, //twitter id, 
 	name: String,
 	headline: String,
 	avatar_url: String,
