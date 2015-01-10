@@ -160,15 +160,21 @@ app.get('/auth/twitter',
   passport.authenticate('twitter'));
 
 app.get('/auth/twitter/callback', 
-  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  passport.authenticate('twitter', { failureRedirect: '/error' }),
   function(req, res) {
     // Successful authentication, redirect home.
+    console.log("twitte authentication succesful");
     res.redirect('/');
   });
 
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
+});
+
+app.get('/error', function(req, res){
+	console.log("Error occured");
+	req.send("Error occured");
 });
 
 http.createServer(app).listen(app.get('port'),function(err){
