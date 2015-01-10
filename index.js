@@ -126,7 +126,7 @@ var User = mongoose.model('User', 	{
 
 
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(methodOverride());
@@ -175,6 +175,12 @@ app.get('/logout', function(req, res){
 app.get('/error', function(req, res){
 	console.log("Error occured");
 	req.send("Error occured");
+});
+
+// ejs test 
+app.get('/ejs', function(req, res){
+	var user = {name: 'ikbha', oauthID : '112123344'};
+	res.render('ejs', {"user": user});
 });
 
 app.get('/ping', function(req, res){
