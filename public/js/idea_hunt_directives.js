@@ -4,7 +4,7 @@ ideaHuntApp.directive('ideaDay', ['ideaService', function(ideaService){
 	function link(scope, element, attrs) {
 		console.log("Inside ideaDay handler link handler");
 		
-		scope.page = attr.page;
+		scope.page = attrs.page;
 		scope.ideas = [];
 
 		page = attrs.page;
