@@ -263,7 +263,7 @@ app.get('/ideas', function(req, res){
 	if(typeof page != 'undefined'){
 
 		//  page days ago
-		endDate = Date.now();
+		endDate = new Date();
 		endDate.setDate(endDate.getDate()-page);
 		endDate.setHours(0,0,0,0);
 		
@@ -275,7 +275,7 @@ app.get('/ideas', function(req, res){
 	}else {
 		page = 0;
 		// Current date time
-		endDate = Date.now();
+		endDate = new Date();
 		
 		//yester day
 		startDate = new Date();
