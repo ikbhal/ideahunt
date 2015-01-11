@@ -145,6 +145,7 @@ var Idea = mongoose.model('Idea', {
 	tagline : String,
 	url : String,
 	shortened_link: String,
+	created: String,
 	author:  {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
 	comments: [ {
 		body : String,
@@ -257,7 +258,35 @@ app.get('/ping', function(req, res){
 app.get('/ideas', function(req, res){
 	console.log('Inside get /ideas -> get ideas');
 
-	Idea.find()
+	var page = req.query.page;
+	var startDate , endDate;
+	if(typeof page != 'undefined'){
+
+		//  page days ago
+		endDate = Date.now();
+		endDate.setDate(endDate.getDate()-page);
+		endDate.setHours(0,0,0,0);
+		
+		//page+1 days ago
+		startDate = new Date();
+		startDate.setDate(startDate.getDate()-page-1);
+		startDate.setHours(0,0,0,0);
+
+	}else {
+		page = 0;
+		// Current date time
+		endDate = Date.now();
+		
+		//yester day
+		startDate = new Date();
+		startDate.setDate(startDate.getDate()-1);
+		startDate.setHours(0,0,0,0);
+	}
+	console.log('***query parameter page : ' + page);
+	console.log("Start date " + util.inspect(startDate) );
+	console.log("End date " + util.inspect(endDate) );
+
+	Idea.find({created: {$gte: startDate, $lt: endDate}})
 	.populate('auhtor')
 	.populate('comments')
 	.populate('votes')
@@ -277,6 +306,31 @@ app.get('/ideas', function(req, res){
 		res.send(response);
 	});
 
+});
+
+// Get Idea details of ideaId
+app.get('/ideas/:ideaId', function(req,res){
+	console.log("Inside Get /ideas/:ideaId ");
+	var ideaId = req.param('ideaId');
+	console.log("ideaId : " + ideaId);
+
+
+	Idea.findById(ideaId, function(err, idea){
+		var response = {'status' : 'fail'};
+		if(err){
+			console.log("Unable to find idea due to error : " + util.inspect(err));
+
+			//send fail error response.
+			response.err = err;
+
+			res.send(response);
+		}else {
+			response.data = idea;
+			console.log("Got idea for find by id : " + ideaId + " is " + util.inspect(idea));
+
+			res.send(response);
+		}
+	});
 });
 
 // Add idea
@@ -302,6 +356,7 @@ app.post('/ideas', function(req, res){
 				idea.url = ideaInput.url;
 				idea.shortened_link = ideaInput.url;// TODO we will generate later shorten url concept
 				idea.author = user;
+				idea.created = Date.now();
 				
 
 				// Save Idea
