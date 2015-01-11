@@ -52,7 +52,7 @@ ideaHuntApp.directive('ideaDayDate', function(){
 
 	// Get current date, previous date, nth days ago based on page no 0, 1, n
 	function getDateForPage(page){
-		Date date = new Date();
+		var date = new Date();
 		date.setDate(date.getDate()-page);
 
 		return date;
