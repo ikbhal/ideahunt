@@ -127,12 +127,6 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 							  </div>
 							</div> 
 							<!-- End user profile, logout popup  menu -->
-							
-							<!-- Begin user id token -->
-							<script type='text/javascript'>
-								var userId = '<%= user._id %>';
-								console.log("user id in script is " + userId);
-							</script>
 
 							<!-- End user id token -->
 
@@ -224,104 +218,9 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 
 	<div id="posts-wrapper" class="container posts" >
 	  
-	  <div class="day" data-component="PostCompact" data-posts-posted-today="true" data-posts-cutoff-index="9">
-	    <time class="posts--date" datetime="2015-01-09">
-	      <h4 class="posts--date--name">Today</h4>
-	      January 9th
-	    </time>
+		<idea-day>
 
-	    <ul class="posts-group" data-posts-list="true">
-
-
-
-
-				<!--Post Begin-->
-	      <li ng-repeat = "post in posts" class="post">
-	    		<div class="post--content" data-href="/posts/{{post.slug}}" data-action="open-modal">
-	      		<div ng-click="toggleVote(post, this)" class="{{post.isvoted?'upvote m-upvoted':'upvote'}}" data-component="VoteMarker" data-vote-id="{{post.objectID}}" data-vote-type="post">
-	        		<a  class="upvote-link"></a>
-	        		<span class="vote-count" data-vote-count="">{{post.votes.length}}</span>
-	      		</div>
-
-	      		<span data-popover="hover" class="user-image-holder">
-	      			<a href="http://toprecur.cloudapp.net/{{post.author.username}}">
-	        			<img class="twitter-rounded user-image" data-component="LazyLoadElement" data-lazyload-src="{{post.author.avatar_url}}" src="{{post.author.avatar_url}}" width="30" height="30">
-							</a>
-							<div data-popover="content">
-								<div class="user-hover-card">
-	  							<a href="http://toprecur.cloudapp.net/jmj">
-	  								<img class="twitter-rounded user-image" data-component="LazyLoadElement" data-lazyload-src="{{post.author.avatar_url}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80" height="80">
-	  							</a>
-	    						<div class="user-maker">M</div>
-	  							<h3>{{post.author.name}}</h3>
-	  							<h4 class="user-headline">Drive</h4>
-	  							<h4 class="user-username">
-	    							<a href="http://toprecur.cloudapp.net/{{post.author.username}}">{{post.author.username}}</a>
-	  							</h4>
-	  							<a class="button v-green" data-component="FollowMarker" data-follow-id="{{post.author.id}}" data-follow-text="Follow" data-unfollow-text="Unfollow" href="http://toprecur.cloudapp.net/#">Follow
-	  							</a>
-								</div>
-							</div>
-						</span>
-	      
-	      		<div class="post--actions">
-	        		<span class="collections-popover-trigger" data-component="CollectedPostMarker" data-collect-post-id="{{post.objectID}}" data-popover="click" data-require-login="true" data-popover-href="/my/collections?post_id=13036">
-	  						<a title="Add &#39;{{post.name}}&#39; to your collections" href="http://toprecur.cloudapp.net/#">
-	    						<span class="collection-popover-trigger--elements-not-collected">
-		      					<svg width="15px" height="14px" viewBox="0 0 15 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" class="collections-popover-trigger--icon">
-		  								<g id="Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-			    							<g id="Home---Add-to-Collection-Button-on-Hover" sketch:type="MSArtboardGroup" transform="translate(-1144.000000, -776.000000)" fill="#C8C0B1">
-			      						<path d="M1157,786 L1157,784.990778 C1157,784.450975 1156.55228,784 1156,784 C1155.44386,784 1155,784.443586 1155,784.990778 L1155,786 L1153.99078,786 C1153.45098,786 1153,786.447715 1153,787 C1153,787.556135 1153.44359,788 1153.99078,788 L1155,788 L1155,789.009222 C1155,789.549025 1155.44772,790 1156,790 C1156.55614,790 1157,789.556414 1157,789.009222 L1157,788 L1158.00922,788 C1158.54902,788 1159,787.552285 1159,787 C1159,786.443865 1158.55641,786 1158.00922,786 L1157,786 Z M1144,777 C1144,776.447715 1144.44749,776 1144.9985,776 L1156.0015,776 C1156.55296,776 1157,776.443865 1157,777 C1157,777.552285 1156.55251,778 1156.0015,778 L1144.9985,778 C1144.44704,778 1144,777.556135 1144,777 Z M1144,782 C1144,781.447715 1144.44749,781 1144.9985,781 L1156.0015,781 C1156.55296,781 1157,781.443865 1157,782 C1157,782.552285 1156.55251,783 1156.0015,783 L1144.9985,783 C1144.44704,783 1144,782.556135 1144,782 Z M1144,787 C1144,786.447715 1144.45304,786 1144.99703,786 L1151.00297,786 C1151.55361,786 1152,786.443865 1152,787 C1152,787.552285 1151.54696,788 1151.00297,788 L1144.99703,788 C1144.44639,788 1144,787.556135 1144,787 Z" id="Add-to-Collection-icon" sketch:type="MSShapeGroup"></path>
-		    							</g>
-		  							</g>
-									</svg>
-		      				<span class="collections-popover-trigger--text ">Collect</span>
-	    						</span>
-	    
-	    						<span class="collection-popover-trigger--elements-collected">
-	      						<svg width="17px" height="14px" viewBox="0 0 17 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" class="collections-popover-trigger--icon">
-										  <g id="Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-										    <g id="Profile---Your-Collection-Page" sketch:type="MSArtboardGroup" transform="translate(-1142.000000, -717.000000)" fill="#DC5425">
-										      <g id="Posts" sketch:type="MSLayerGroup" transform="translate(336.000000, 475.000000)">
-										        <g id="added-to-collection" transform="translate(806.000000, 92.000000)" sketch:type="MSShapeGroup">
-										          <path d="M11.0355339,160.863961 L9.62118422,159.449611 C9.22796861,159.056396 8.59763107,159.059223 8.20710678,159.449747 C7.81385983,159.842994 7.81652154,160.473376 8.20697066,160.863825 L10.3285632,162.985417 C10.5248186,163.181673 10.7801422,163.279272 11.035237,163.279253 C11.2911998,163.279828 11.5458806,163.182041 11.7405407,162.987381 L15.9873814,158.740541 C16.3720431,158.355879 16.3758057,157.718951 15.9852814,157.328427 C15.5920344,156.93518 14.9625323,156.936963 14.5731678,157.326327 L11.0355339,160.863961 Z M0,151 C0,150.447715 0.447489426,150 0.998502329,150 L12.0014977,150 C12.5529553,150 13,150.443865 13,151 C13,151.552285 12.5525106,152 12.0014977,152 L0.998502329,152 C0.44704472,152 0,151.556135 0,151 Z M0,156 C0,155.447715 0.447489426,155 0.998502329,155 L12.0014977,155 C12.5529553,155 13,155.443865 13,156 C13,156.552285 12.5525106,157 12.0014977,157 L0.998502329,157 C0.44704472,157 0,156.556135 0,156 Z M0,161 C0,160.447715 0.446771324,160 1.00138006,160 L5.49861994,160 C6.05166687,160 6.5,160.443865 6.5,161 C6.5,161.552285 6.05322868,162 5.49861994,162 L1.00138006,162 C0.448333126,162 0,161.556135 0,161 Z" id="Rectangle-319"></path>
-										        </g>
-										      </g>
-										    </g>
-										  </g>
-										</svg>
-	      						<span class="collections-popover-trigger--text">Collected</span>
-	    						</span>
-	  						</a>
-							</span>
-
-	        		<a href="http://toprecur.cloudapp.net/posts/{{post.slug}}" class="post--actions--comments view-discussion">
-	          		<svg width="16px" height="14px" viewBox="0 0 16 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" class="comment-image">
-	  							<g id="Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-							    <g sketch:type="MSArtboardGroup" transform="translate(-1183.000000, -853.000000)" fill="#BAB5B3" opacity="0.5">
-							      <g id="Posts" sketch:type="MSLayerGroup" transform="translate(325.000000, 245.000000)">
-							        <path d="M859.869393,618.060241 C858.702638,616.995887 858,615.623267 858,614.125 C858,610.742256 861.581722,608 866,608 C870.418278,608 874,610.742256 874,614.125 C874,617.507744 870.418278,620.25 866,620.25 C864.901824,620.25 863.855328,620.080587 862.902667,619.774035 C861.343849,620.619428 858.296389,621.736418 858.296389,621.736418 C858.296389,621.736418 859.315604,619.438452 859.869393,618.060241 Z" id="Oval-44" sketch:type="MSShapeGroup"></path>
-							      </g>
-							    </g>
-							  </g>
-							</svg>
-	          	<span class="comment-count">{{post.comments.count}}</span>
-	        		</a>
-	      		</div>
-
-	      		<div class="url">
-	        		<a class="post-url title" target="_blank" href="http://toprecur.cloudapp.net/l/ff90d680a4">{{post.name}}</a>
-	        		<span class="post-tagline description">{{post.tagline}}</span>
-	      		</div>
-	    		</div>
-	  		</li>
-
-	  		<!--Post End -->
-
-
-
-	    </ul>
-	  </div>
+		</idea-day>
 
 	</div>
 
@@ -401,13 +300,24 @@ latest mobile apps, websites, and technology Ideas that everyone&#39;s talking a
 	</div>
 
 
-	<!--
-	<script src="js/sample_data.js"></script>
-
-	-->
-	<script src="bower_components/angularjs/angular.js"></script>
-  <script src="js/controllers.js"></script>		
-  
+		<!-- Begin of script loading -->
+		<!--
+		<script src="js/sample_data.js"></script>
+		-->
+		<script src="bower_components/angularjs/angular.js"></script>
+	  <script src="js/idea_hunt_app.js"></script>			  	  
+	  <% if(typeof user !== 'undefined'){%>
+			<!-- Begin user id token -->
+			<script type='text/javascript'>
+				var userId = '<%= user._id %>';
+				console.log("user id in script is " + userId);
+			</script>
+		<%}%>
+		<script src="js/auth_service.js"></script>
+		<script src="js/controllers.js"></script>
+		<script src="js/idea_service.js"></script>
+		<script src="js/idea_hunt_directives.js"></script>
+		<!-- End of script loading -->
 	</body>
 
 </html>

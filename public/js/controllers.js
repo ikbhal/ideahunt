@@ -1,36 +1,5 @@
-var ideaHuntApp = angular.module('ideaHuntApp', []);
 
-// Begin of ideaService 
-ideaHuntApp.service('ideaService', function($http){
-	this.addIdea = function(idea){
-		console.log('Inside IdeaService.addIdea');
-		console.log(idea);
-		return $http.post('http://toprecur.cloudapp.net/ideas', idea);
-	};
-
-	this.getIdeas = function(){
-		console.log('Inside IdeaService.getIdeas');
-		return $http.get('http://toprecur.cloudapp.net/ideas');
-	};
-
-	this.toggleIdeaVote = function(ideaId, userId){
-		console.log("Inside toggle idea vote");
-		var voteURL = 'http://toprecur.cloudapp.net/ideas/' + ideaId + '/vote'
-		console.log('userId:' + userId);
-		return $http.post(voteURL, {'userId' : userId});
-	};
-});
-// End of ideaService 
-
-// Begin of idea directives
-ideaHuntApp.directive('idea', function(){
-	return {
-		templateUrl : 'idea_template.html'
-	};
-});
-// End of idea directive
-
-ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
+ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService, authService) {
  	console.log('Inside IdeaHuntListCtrl');
 
 	$scope.showUserMenuFlag = false;
