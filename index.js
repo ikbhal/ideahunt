@@ -72,7 +72,9 @@ passport.use(new TwitterStrategy({
 						id: profile.id,
 						name: profile.displayName,
 						headline: profile._json.description,
-						avatar_url: profile.profile_image_url,
+						//TODO dummy avatar sample url.
+						avatar_url: profile.profile_image_url
+						||"http://aws.producthunt.com/profile_image/67291/1416413759-022ehIu430@2X.png",
 						link: '/'+profile.username,
 						username: profile.username,
 						is_maker: false,
