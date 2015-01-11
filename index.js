@@ -265,10 +265,14 @@ app.get('/ideas', function(req, res){
 	var dayinms = 24*60*60*1000;
 
 	if(typeof page != 'undefined'){
-
+		console.log("I got page in query parameters:" + page)
 		var cdate  = Date.now();
 		//  page days ago
-		endDate = (Math.floor(cdate/dayinms)-page)*dayinms;
+		if(page == 0){
+			endDate = cdate;
+		}else {
+			endDate = (Math.floor(cdate/dayinms)-page)*dayinms;
+		}
 		
 		//page+1 days ago
 		startDate = startDate = (Math.floor(cdate/dayinms)-page-1)*dayinms;
