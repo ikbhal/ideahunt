@@ -273,19 +273,21 @@ app.get('/ideas', function(req, res){
 		}else {
 			endDate = (Math.floor(cdate/dayinms)-page)*dayinms;
 		}
-		
 		//page+1 days ago
 		startDate = startDate = (Math.floor(cdate/dayinms)-page-1)*dayinms;
-
+		
 	}else {
 		page = 0;
 		// Current date time
 		var cdate = Date.now();
 		endDate = cdate;
-		
+
 		//yester day
 		startDate = (Math.floor(cdate/dayinms)-1)*dayinms;
 	}
+	endDate = new Date(endDate);
+	startDate = new Date(startDate);
+
 	console.log('***query parameter page : ' + page);
 	console.log("Start date " + util.inspect(startDate) );
 	console.log("End date " + util.inspect(endDate) );
