@@ -5,7 +5,7 @@
 
 		<!--Post Begin-->
     <li ng-repeat = "idea in ideas" class="post">
-  		<div class="post--content" data-href="/posts/{{post.slug}}" data-action="open-modal">
+  		<div class="post--content" data-href="/posts/{{idea.slug}}" data-action="open-modal">
 
     		<!--New Idea vote tag -->
     		<idea-vote idea="idea">
@@ -13,21 +13,21 @@
     		<!--End Idea vote tag -->
 
     		<span data-popover="hover" class="user-image-holder">
-    			<a href="http://toprecur.cloudapp.net/{{post.author.username}}">
-      			<img class="twitter-rounded user-image" data-component="LazyLoadElement" data-lazyload-src="{{post.author.avatar_url}}" src="{{post.author.avatar_url}}" width="30" height="30">
+    			<a href="http://toprecur.cloudapp.net/{{idea.author.username}}">
+      			<img class="twitter-rounded user-image" data-component="LazyLoadElement" data-lazyload-src="{{idea.author.avatar_url}}" src="{{idea.author.avatar_url}}" width="30" height="30">
 					</a>
 					<div data-popover="content">
 						<div class="user-hover-card">
 							<a href="http://toprecur.cloudapp.net/jmj">
-								<img class="twitter-rounded user-image" data-component="LazyLoadElement" data-lazyload-src="{{post.author.avatar_url}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80" height="80">
+								<img class="twitter-rounded user-image" data-component="LazyLoadElement" data-lazyload-src="{{idea.author.avatar_url}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80" height="80">
 							</a>
   						<div class="user-maker">M</div>
-							<h3>{{post.author.name}}</h3>
+							<h3>{{idea.author.name}}</h3>
 							<h4 class="user-headline">Drive</h4>
 							<h4 class="user-username">
-  							<a href="http://toprecur.cloudapp.net/{{post.author.username}}">{{post.author.username}}</a>
+  							<a href="http://toprecur.cloudapp.net/{{idea.author.username}}">{{idea.author.username}}</a>
 							</h4>
-							<a class="button v-green" data-component="FollowMarker" data-follow-id="{{post.author.id}}" data-follow-text="Follow" data-unfollow-text="Unfollow" href="http://toprecur.cloudapp.net/#">Follow
+							<a class="button v-green" data-component="FollowMarker" data-follow-id="{{idea.author.id}}" data-follow-text="Follow" data-unfollow-text="Unfollow" href="http://toprecur.cloudapp.net/#">Follow
 							</a>
 						</div>
 					</div>

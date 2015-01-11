@@ -16,7 +16,7 @@ ideaHuntApp.directive('ideaDay', ['ideaService', function(ideaService){
 		ideaService.getIdeasByPageId(scope.page).
 			success(function(data, status, headers, config){
 				console.log('Got the response form getIdeaByPageId ');
-				console.log(response);
+				console.log(data);
 				scope.ideas = data.data;
 				console.log('updated scope.ideas to ');
 				console.log(scope.ideas);
