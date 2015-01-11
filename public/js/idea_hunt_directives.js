@@ -1,21 +1,24 @@
+
+/*jshint strict: true */
+"use strict";
+/* global ideaHuntApp */
 ideaHuntApp.directive('ideaDay', ['ideaService', function(ideaService){
-	console.log("Inside ideaDay handler");
+	console.log('Inside ideaDay handler');
 
 	function link(scope, element, attrs) {
-		console.log("Inside ideaDay handler link handler");
+		console.log('Inside ideaDay handler link handler');
 		
 		scope.page = attrs.page;
 		scope.ideas = [];
 
-		page = attrs.page;
-		console.log("page number: " + page);
+		console.log('page number: ' + scope.page);
 
 		ideaService.getIdeasByPageId(scope.page).
 			success(function(data, status, headers, config){
-				console.log("Got the response form getIdeaByPageId ");
+				console.log('Got the response form getIdeaByPageId ');
 				console.log(response);
 				scope.ideas = data.data;
-				console.log("updated scope.ideas to ");
+				console.log('updated scope.ideas to ');
 				console.log(scope.ideas);
 			}).
 			error(function(err){
@@ -36,10 +39,10 @@ ideaHuntApp.directive('ideaDay', ['ideaService', function(ideaService){
 
 // Idea Day Date
 ideaHuntApp.directive('ideaDayDate', function(){
-	console.log("inside ideaDayDate directive");
+	console.log('inside ideaDayDate directive');
 
 	function link(scope, element, attrs) {
-		console.log("Inside ideaDayDate handler link handler");
+		console.log('Inside ideaDayDate handler link handler');
 
 		var page = scope.page;
 
@@ -113,25 +116,25 @@ ideaHuntApp.directive('ideaDayDate', function(){
 			var weekDayNo = date.getDay();
 			switch(weekDayNo){
 				case 0:
-	        dayName = "Sunday";
+	        dayName = 'Sunday';
 	        break;
 		    case 1:
-	        dayName = "Monday";
+	        dayName = 'Monday';
 	        break;
 		    case 2:
-	        dayName = "Tuesday";
+	        dayName = 'Tuesday';
 	        break;
 		    case 3:
-	        dayName = "Wednesday";
+	        dayName = 'Wednesday';
 	        break;
 		    case 4:
-	        dayName = "Thursday";
+	        dayName = 'Thursday';
 	        break;
 		    case 5:
-	        dayName = "Friday";
+	        dayName = 'Friday';
 	        break;
 		    case 6:
-	        dayName = "Saturday";
+	        dayName = 'Saturday';
 	        break;
 			} //end of switch getDayName
 		}
@@ -151,9 +154,9 @@ ideaHuntApp.directive('ideaDayDate', function(){
 // Idea Vote
 /*
 <!-- Begin of Idea vote -->
-<div ng-click="toggleVote(post, this)" class="{{post.isvoted?'upvote m-upvoted':'upvote'}}" data-component="VoteMarker" data-vote-id="{{post.objectID}}" data-vote-type="post">
-	<a  class="upvote-link"></a>
-	<span class="vote-count" data-vote-count="">{{post.votes.length}}</span>
+<div ng-click='toggleVote(post, this)' class='{{post.isvoted?'upvote m-upvoted':'upvote'}}' data-component='VoteMarker' data-vote-id='{{post.objectID}}' data-vote-type='post'>
+	<a  class='upvote-link'></a>
+	<span class='vote-count' data-vote-count=''>{{post.votes.length}}</span>
 </div>
 <!-- End of Idea vote -->
 */
@@ -167,10 +170,10 @@ ideaHuntApp.directive('idea', function(){
 // End of idea directive
 
 ideaHuntApp.directive('ideaVote', ['ideaService', function(){
-	console.log("inside ideaVote directive");
+	console.log('inside ideaVote directive');
 
 	function link(scope, element, attrs) {
-		console.log("Inside ideaVote handler link handler");
+		console.log('Inside ideaVote handler link handler');
 	}
 
 	return {
@@ -189,7 +192,7 @@ ideaHuntApp.directive('ideaVote', ['ideaService', function(){
 					console.log('user id: ' + userId);
 					ideaService.toggleIdeaVote(post._id, userId).then(
 						function(data){
-							console.log("ideaService toggleIdeaVote success ");
+							console.log('ideaService toggleIdeaVote success ');
 							console.log(data);
 							post.isVote = !post.isVote;
 							// set votes properly
@@ -197,7 +200,7 @@ ideaHuntApp.directive('ideaVote', ['ideaService', function(){
 							console.log(post);
 						},
 						function(err){
-							console.log("Unable to toggle idea vote due to error " );
+							console.log('Unable to toggle idea vote due to error ' );
 							console.log(err);
 						}
 					);
@@ -213,7 +216,7 @@ ideaHuntApp.directive('ideaVote', ['ideaService', function(){
 
 // Only idea title, tagline, clickable
 ideaHuntApp.directive('IdeaBrief', ['ideaService', function(){
-	console.log("inside IdeaBrief directive");
+	console.log('inside IdeaBrief directive');
 	return {
 		restrict: 'E',
 		scope: {
@@ -226,7 +229,7 @@ ideaHuntApp.directive('IdeaBrief', ['ideaService', function(){
 
 // CommentBubbleIcon
 ideaHuntApp.directive('CommentBubbleIcon', function(){
-	console.log("inside CommentBubbleIcon directive");
+	console.log('inside CommentBubbleIcon directive');
 	return {
 		restrict: 'E',
 		templateUrl: 'comment_bubble_icon_template.html'
@@ -235,7 +238,7 @@ ideaHuntApp.directive('CommentBubbleIcon', function(){
 
 // Collection Icon
 ideaHuntApp.directive('CollectionIcon', function(){
-	console.log("inside CollectionIcon directive");
+	console.log('inside CollectionIcon directive');
 	return {
 		restrict: 'E',
 		templateUrl: 'collection_icon_template.html'
