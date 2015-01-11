@@ -253,6 +253,7 @@ app.get('/ping', function(req, res){
 	res.end('pong');
 });
 
+
 // API
 // Get all ideas
 app.get('/ideas', function(req, res){
@@ -260,27 +261,26 @@ app.get('/ideas', function(req, res){
 
 	var page = req.query.page;
 	var startDate , endDate;
+	
+	var dayinms = 24*60*60*1000;
+
 	if(typeof page != 'undefined'){
 
+		var cdate  = Date.now();
 		//  page days ago
-		endDate = new Date();
-		endDate.setDate(endDate.getDate()-page);
-		endDate.setHours(0,0,0,0);
+		endDate = (Math.floor(cdate/dayinms)-page)*dayinms;
 		
 		//page+1 days ago
-		startDate = new Date();
-		startDate.setDate(startDate.getDate()-page-1);
-		startDate.setHours(0,0,0,0);
+		startDate = startDate = (Math.floor(cdate/dayinms)-page-1)*dayinms;
 
 	}else {
 		page = 0;
 		// Current date time
-		endDate = new Date();
+		var cdate = Date.now();
+		endDate = cdate;
 		
 		//yester day
-		startDate = new Date();
-		startDate.setDate(startDate.getDate()-1);
-		startDate.setHours(0,0,0,0);
+		startDate = (Math.floor(cdate/dayinms)-1)*dayinms;
 	}
 	console.log('***query parameter page : ' + page);
 	console.log("Start date " + util.inspect(startDate) );
