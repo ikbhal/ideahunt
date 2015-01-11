@@ -20,8 +20,16 @@ ideaHuntApp.service('ideaService', function($http){
 		return $http.post(voteURL, {'userId' : userId});
 	};
 });
-
 // End of ideaService 
+
+// Begin of idea directives
+ideaHuntApp.directive('idea', function(){
+	return {
+		templateUrl : 'idea_template.html'
+	};
+});
+// End of idea directive
+
 ideaHuntApp.controller('IdeaHuntListCtrl', function ($scope, ideaService) {
  	console.log('Inside IdeaHuntListCtrl');
 
