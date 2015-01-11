@@ -162,11 +162,13 @@ ideaHuntApp.directive('ideaDayDate', function(){
 */
 
 // Begin of idea directives
+/*
 ideaHuntApp.directive('idea', function(){
 	return {
 		templateUrl : 'idea_template.html'
 	};
 });
+*/
 // End of idea directive
 
 ideaHuntApp.directive('ideaVote', ['ideaService', function(){
